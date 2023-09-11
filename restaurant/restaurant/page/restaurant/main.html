@@ -1,0 +1,36 @@
+
+<div style="width: 100%;caret-color: transparent;" class="page-form">
+    <table style="width: 100%">
+        <td style="width: 25%">
+            <div style="margin-left: 10px;overflow-y: scroll;height: 700px">
+                {%for x in doc.orders%}
+                    {{x.table}}
+                {%endfor%}
+            </div>
+        </td>
+        <td style="width:2%"></td>
+        <td style="width: 73%">
+            <div style="width:100%;height: 700px">
+                <div style="border: 1px solid lightgray">
+                    {{doc.selected_order}}
+
+                </div>
+            </div>
+        </td>
+    </table>
+</div>
+
+<!--<div  class="row">-->
+    <!--<div  class="col-sm-6 col-md-4 col-xl-4 col-12 pa-3 mt-3">-->
+       <!--<div style="width: 100%;border: 1px solid black" class="rounded-sm">-->
+           <!--<div class="row d-flex mx-0 align-center">-->
+               <!--<span style="font-size:1vm">test</span>-->
+           <!--</div>-->
+       <!--</div>-->
+    <!--</div>-->
+    <!--<div data-v-2193daee="" class="col-sm-6 col-md-4 col-xl-4 col-12 pa-3  mt-3">-->
+       <!--<div style="width: 100%;border: 1px solid black;font-size:1vm" class="rounded-sm">-->
+           <!--<span style="font-size:3vmin">test</span>-->
+       <!--</div>-->
+    <!--</div>-->
+<!--</div>-->

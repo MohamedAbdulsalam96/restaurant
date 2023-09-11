@@ -1,0 +1,1741 @@
+<!--<head>-->
+    <!--<meta charset="utf-8">-->
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+    <!--<meta name="viewport" content="width=device-width,initial-scale=1">-->
+    <!--&lt;!&ndash;[if IE]>-->
+    <!--<link rel="icon" href="/favicon.ico"/><![endif]&ndash;&gt;-->
+    <!--<title>Restaurant Admin</title>-->
+    <!--<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap" rel="stylesheet">-->
+    <!--<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>-->
+    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">-->
+    <!--<link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">-->
+    <!--<script src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>-->
+    <!--<link href="{{doc.url}}/css/AppSettings.c2354dbb.css" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/css/LiveOrder~Orders~Report~Table.bcd1af58.css" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/css/Report.b12565ac.css" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/css/Settings.03ff31ff.css" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/css/Subscriptions.856be0ea.css" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/css/chunk-06c002b4.c1ae2e2c.css" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/css/chunk-071cefca.43a6d99c.css" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/css/chunk-18f4f33a.43a6d99c.css" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/css/chunk-1c085e0c.e55a18ab.css" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/css/chunk-1ca34b3b.c3c7d211.css" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/css/chunk-1d023ba2.bea06b04.css" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/css/chunk-1da892bc.d37a3c29.css" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/css/chunk-2ccb7f9c.d6375359.css" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/css/chunk-2fc8c564.8e3e5459.css" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/css/chunk-397f7945.5cd055f4.css" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/css/chunk-40c0721b.e027ad77.css" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/css/chunk-41f03616.6ff30565.css" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/css/chunk-42257daa.9ca862c5.css" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/css/chunk-46593208.4eb0deb2.css" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/css/chunk-4f5e5554.4eb0deb2.css" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/css/chunk-505a25da.4eb0deb2.css" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/css/chunk-58311277.757b7acf.css" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/css/chunk-59028ab3.9d9e2f64.css" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/css/chunk-63fbaee0.d47820e2.css" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/css/chunk-65598455.df9d9a7c.css" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/css/chunk-6d76daca.46e9f3ff.css" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/css/chunk-6dcad59d.6206b34a.css" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/css/chunk-71914e43.df9d9a7c.css" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/css/chunk-b15876f0.4eb0deb2.css" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/css/chunk-bb294078.e9e477ed.css" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/css/chunk-d58ff718.2695527c.css" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/css/chunk-fd096af0.676b03db.css" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/AppSettings.fd595795.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/Dashboard.b41463e0.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/Feedback.e1d0bb47.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/FoodCategory.ebceca64.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/LiveOrder.f24a3892.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/LiveOrder~Orders~Report~Table.c8ef40da.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/Orders.36b5d327.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/Payment.815951d6.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/PaymentDetails.7d13bfdc.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/Report.60a5939a.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/Settings.e9f566b9.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/Statitics.0cc91a14.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/Subscriptions.6f358061.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/Table.939034f7.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/Tax.066164cb.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-005df544.f0994919.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-019a3904.9061339c.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-067ccb14.d7c9f410.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-06c002b4.8e5d7f57.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-071cefca.b73b2d4f.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-08aed91a.09189cfd.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-0f6abaf1.69901e6c.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-18f4f33a.81c514e7.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-1c085e0c.b97a17a6.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-1ca34b3b.110ab570.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-1d023ba2.c71dd9d9.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-1da892bc.6c91c32f.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-2ccb7f9c.5f3fb67d.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-2d0aece7.14865218.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-2d0d3523.8792082d.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-2d0d6704.4639b9a8.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-2d0d7123.73ca8f9c.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-2d0e525f.3029fae9.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-2d0e91c3.270af800.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-2d0efc83.6b29f471.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-2d216214.9b6331c5.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-2d216257.9343dcf3.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-2d2183d1.c6d7a397.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-2d21a799.e482f54a.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-2d22c91f.4653e555.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-2d230530.aa5c59e6.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-2ed89338.96e1c896.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-2fc8c564.928f1c2c.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-2fce7cdf.89058371.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-2fe2884a.c3c36228.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-397f7945.595f5ce9.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-40c0721b.6aa68c7a.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-41f03616.8aa7dc45.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-42257daa.a2ca5235.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-46593208.ddf0fac9.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-4ebe59d9.aab825e9.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-4f5e5554.92434fc6.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-50235423.3da2dcdd.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-505a25da.dc9376e9.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-51262132.52f17fa8.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-58311277.317f3356.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-59028ab3.8961660e.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-5af607ef.0fd3e025.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-5cafb6b7.c1ea0016.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-5ccf5ca4.c4e97c3a.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-5e58d8e6.a276afe3.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-63fbaee0.208e5ff3.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-65598455.7b7204de.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-6d76daca.a48ba97f.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-6dcad59d.44e6f773.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-6f559a36.2b294183.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-70178cd8.e8195f45.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-7033d44d.e70b3924.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-7099cc4a.b6004d08.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-709a386d.dc76ba9e.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-71914e43.3b5c8b85.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-77b41c82.1f408e50.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-79f84159.81789ce8.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-7f671fa0.4382f1b0.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-8f33318c.419922d4.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-a44b5dae.2713d790.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-b15876f0.2f0921a3.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-bb294078.09fdcd43.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-d58ff718.4790f1e8.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-dcb27e6a.0f25c464.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-eb7cd68a.3ae0755f.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-f37c8014.506625bc.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-f7ff1722.5996a762.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-fab5642e.eb1a7cbe.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/js/chunk-fd096af0.579e3062.js" rel="prefetch">-->
+    <!--<link href="{{doc.url}}/css/app.b5d0bbcc.css" rel="preload" as="style">-->
+    <!--<link href="{{doc.url}}/css/chunk-vendors.900c3ccb.css" rel="preload" as="style">-->
+    <!--<link href="{{doc.url}}/js/app.3adc936c.js" rel="preload" as="script">-->
+    <!--<link href="{{doc.url}}/js/chunk-vendors.417696dd.js" rel="preload" as="script">-->
+    <!--<link href="{{doc.url}}/css/chunk-vendors.900c3ccb.css" rel="stylesheet">-->
+    <!--<link href="{{doc.url}}/css/app.b5d0bbcc.css" rel="stylesheet">-->
+    <!--<link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32x32.png">-->
+    <!--<link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16x16.png">-->
+    <!--<link rel="manifest" href="/manifest.json">-->
+    <!--<meta name="theme-color" content="#4DBA87">-->
+    <!--<meta name="apple-mobile-web-app-capable" content="no">-->
+    <!--<meta name="apple-mobile-web-app-status-bar-style" content="default">-->
+    <!--<meta name="apple-mobile-web-app-title" content="restaurent-app-admin">-->
+    <!--<link rel="apple-touch-icon" href="/img/icons/apple-touch-icon-152x152.png">-->
+    <!--<link rel="mask-icon" href="/img/icons/safari-pinned-tab.svg" color="#4DBA87">-->
+    <!--<meta name="msapplication-TileImage" content="/img/icons/msapplication-icon-144x144.png">-->
+    <!--<meta name="msapplication-TileColor" content="#000000">-->
+    <!--<style>-->
+
+    <!--</style>-->
+    <!--<style type="text/css" id="vuetify-theme-stylesheet">.v-application a {-->
+        <!--color: #ee765f;-->
+    <!--}-->
+
+    <!--.v-application .primary {-->
+        <!--background-color: #ee765f !important;-->
+        <!--border-color: #ee765f !important;-->
+    <!--}-->
+
+    <!--.v-application .primary&#45;&#45;text {-->
+        <!--color: #ee765f !important;-->
+        <!--caret-color: #ee765f !important;-->
+    <!--}-->
+
+    <!--.v-application .primary.lighten-5 {-->
+        <!--background-color: #ffffe4 !important;-->
+        <!--border-color: #ffffe4 !important;-->
+    <!--}-->
+
+    <!--.v-application .primary&#45;&#45;text.text&#45;&#45;lighten-5 {-->
+        <!--color: #ffffe4 !important;-->
+        <!--caret-color: #ffffe4 !important;-->
+    <!--}-->
+
+    <!--.v-application .primary.lighten-4 {-->
+        <!--background-color: #ffe5c8 !important;-->
+        <!--border-color: #ffe5c8 !important;-->
+    <!--}-->
+
+    <!--.v-application .primary&#45;&#45;text.text&#45;&#45;lighten-4 {-->
+        <!--color: #ffe5c8 !important;-->
+        <!--caret-color: #ffe5c8 !important;-->
+    <!--}-->
+
+    <!--.v-application .primary.lighten-3 {-->
+        <!--background-color: #ffc9ad !important;-->
+        <!--border-color: #ffc9ad !important;-->
+    <!--}-->
+
+    <!--.v-application .primary&#45;&#45;text.text&#45;&#45;lighten-3 {-->
+        <!--color: #ffc9ad !important;-->
+        <!--caret-color: #ffc9ad !important;-->
+    <!--}-->
+
+    <!--.v-application .primary.lighten-2 {-->
+        <!--background-color: #ffac92 !important;-->
+        <!--border-color: #ffac92 !important;-->
+    <!--}-->
+
+    <!--.v-application .primary&#45;&#45;text.text&#45;&#45;lighten-2 {-->
+        <!--color: #ffac92 !important;-->
+        <!--caret-color: #ffac92 !important;-->
+    <!--}-->
+
+    <!--.v-application .primary.lighten-1 {-->
+        <!--background-color: #ff9178 !important;-->
+        <!--border-color: #ff9178 !important;-->
+    <!--}-->
+
+    <!--.v-application .primary&#45;&#45;text.text&#45;&#45;lighten-1 {-->
+        <!--color: #ff9178 !important;-->
+        <!--caret-color: #ff9178 !important;-->
+    <!--}-->
+
+    <!--.v-application .primary.darken-1 {-->
+        <!--background-color: #cf5c47 !important;-->
+        <!--border-color: #cf5c47 !important;-->
+    <!--}-->
+
+    <!--.v-application .primary&#45;&#45;text.text&#45;&#45;darken-1 {-->
+        <!--color: #cf5c47 !important;-->
+        <!--caret-color: #cf5c47 !important;-->
+    <!--}-->
+
+    <!--.v-application .primary.darken-2 {-->
+        <!--background-color: #b14130 !important;-->
+        <!--border-color: #b14130 !important;-->
+    <!--}-->
+
+    <!--.v-application .primary&#45;&#45;text.text&#45;&#45;darken-2 {-->
+        <!--color: #b14130 !important;-->
+        <!--caret-color: #b14130 !important;-->
+    <!--}-->
+
+    <!--.v-application .primary.darken-3 {-->
+        <!--background-color: #93271a !important;-->
+        <!--border-color: #93271a !important;-->
+    <!--}-->
+
+    <!--.v-application .primary&#45;&#45;text.text&#45;&#45;darken-3 {-->
+        <!--color: #93271a !important;-->
+        <!--caret-color: #93271a !important;-->
+    <!--}-->
+
+    <!--.v-application .primary.darken-4 {-->
+        <!--background-color: #750402 !important;-->
+        <!--border-color: #750402 !important;-->
+    <!--}-->
+
+    <!--.v-application .primary&#45;&#45;text.text&#45;&#45;darken-4 {-->
+        <!--color: #750402 !important;-->
+        <!--caret-color: #750402 !important;-->
+    <!--}-->
+
+    <!--.v-application .secondary {-->
+        <!--background-color: #004a4f !important;-->
+        <!--border-color: #004a4f !important;-->
+    <!--}-->
+
+    <!--.v-application .secondary&#45;&#45;text {-->
+        <!--color: #004a4f !important;-->
+        <!--caret-color: #004a4f !important;-->
+    <!--}-->
+
+    <!--.v-application .secondary.lighten-5 {-->
+        <!--background-color: #8fcbd0 !important;-->
+        <!--border-color: #8fcbd0 !important;-->
+    <!--}-->
+
+    <!--.v-application .secondary&#45;&#45;text.text&#45;&#45;lighten-5 {-->
+        <!--color: #8fcbd0 !important;-->
+        <!--caret-color: #8fcbd0 !important;-->
+    <!--}-->
+
+    <!--.v-application .secondary.lighten-4 {-->
+        <!--background-color: #74b0b5 !important;-->
+        <!--border-color: #74b0b5 !important;-->
+    <!--}-->
+
+    <!--.v-application .secondary&#45;&#45;text.text&#45;&#45;lighten-4 {-->
+        <!--color: #74b0b5 !important;-->
+        <!--caret-color: #74b0b5 !important;-->
+    <!--}-->
+
+    <!--.v-application .secondary.lighten-3 {-->
+        <!--background-color: #5a959a !important;-->
+        <!--border-color: #5a959a !important;-->
+    <!--}-->
+
+    <!--.v-application .secondary&#45;&#45;text.text&#45;&#45;lighten-3 {-->
+        <!--color: #5a959a !important;-->
+        <!--caret-color: #5a959a !important;-->
+    <!--}-->
+
+    <!--.v-application .secondary.lighten-2 {-->
+        <!--background-color: #407b80 !important;-->
+        <!--border-color: #407b80 !important;-->
+    <!--}-->
+
+    <!--.v-application .secondary&#45;&#45;text.text&#45;&#45;lighten-2 {-->
+        <!--color: #407b80 !important;-->
+        <!--caret-color: #407b80 !important;-->
+    <!--}-->
+
+    <!--.v-application .secondary.lighten-1 {-->
+        <!--background-color: #246267 !important;-->
+        <!--border-color: #246267 !important;-->
+    <!--}-->
+
+    <!--.v-application .secondary&#45;&#45;text.text&#45;&#45;lighten-1 {-->
+        <!--color: #246267 !important;-->
+        <!--caret-color: #246267 !important;-->
+    <!--}-->
+
+    <!--.v-application .secondary.darken-1 {-->
+        <!--background-color: #003338 !important;-->
+        <!--border-color: #003338 !important;-->
+    <!--}-->
+
+    <!--.v-application .secondary&#45;&#45;text.text&#45;&#45;darken-1 {-->
+        <!--color: #003338 !important;-->
+        <!--caret-color: #003338 !important;-->
+    <!--}-->
+
+    <!--.v-application .secondary.darken-2 {-->
+        <!--background-color: #001f23 !important;-->
+        <!--border-color: #001f23 !important;-->
+    <!--}-->
+
+    <!--.v-application .secondary&#45;&#45;text.text&#45;&#45;darken-2 {-->
+        <!--color: #001f23 !important;-->
+        <!--caret-color: #001f23 !important;-->
+    <!--}-->
+
+    <!--.v-application .secondary.darken-3 {-->
+        <!--background-color: #00070d !important;-->
+        <!--border-color: #00070d !important;-->
+    <!--}-->
+
+    <!--.v-application .secondary&#45;&#45;text.text&#45;&#45;darken-3 {-->
+        <!--color: #00070d !important;-->
+        <!--caret-color: #00070d !important;-->
+    <!--}-->
+
+    <!--.v-application .secondary.darken-4 {-->
+        <!--background-color: #000000 !important;-->
+        <!--border-color: #000000 !important;-->
+    <!--}-->
+
+    <!--.v-application .secondary&#45;&#45;text.text&#45;&#45;darken-4 {-->
+        <!--color: #000000 !important;-->
+        <!--caret-color: #000000 !important;-->
+    <!--}-->
+
+    <!--.v-application .accent {-->
+        <!--background-color: #82b1ff !important;-->
+        <!--border-color: #82b1ff !important;-->
+    <!--}-->
+
+    <!--.v-application .accent&#45;&#45;text {-->
+        <!--color: #82b1ff !important;-->
+        <!--caret-color: #82b1ff !important;-->
+    <!--}-->
+
+    <!--.v-application .accent.lighten-5 {-->
+        <!--background-color: #ffffff !important;-->
+        <!--border-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .accent&#45;&#45;text.text&#45;&#45;lighten-5 {-->
+        <!--color: #ffffff !important;-->
+        <!--caret-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .accent.lighten-4 {-->
+        <!--background-color: #f8ffff !important;-->
+        <!--border-color: #f8ffff !important;-->
+    <!--}-->
+
+    <!--.v-application .accent&#45;&#45;text.text&#45;&#45;lighten-4 {-->
+        <!--color: #f8ffff !important;-->
+        <!--caret-color: #f8ffff !important;-->
+    <!--}-->
+
+    <!--.v-application .accent.lighten-3 {-->
+        <!--background-color: #daffff !important;-->
+        <!--border-color: #daffff !important;-->
+    <!--}-->
+
+    <!--.v-application .accent&#45;&#45;text.text&#45;&#45;lighten-3 {-->
+        <!--color: #daffff !important;-->
+        <!--caret-color: #daffff !important;-->
+    <!--}-->
+
+    <!--.v-application .accent.lighten-2 {-->
+        <!--background-color: #bce8ff !important;-->
+        <!--border-color: #bce8ff !important;-->
+    <!--}-->
+
+    <!--.v-application .accent&#45;&#45;text.text&#45;&#45;lighten-2 {-->
+        <!--color: #bce8ff !important;-->
+        <!--caret-color: #bce8ff !important;-->
+    <!--}-->
+
+    <!--.v-application .accent.lighten-1 {-->
+        <!--background-color: #9fccff !important;-->
+        <!--border-color: #9fccff !important;-->
+    <!--}-->
+
+    <!--.v-application .accent&#45;&#45;text.text&#45;&#45;lighten-1 {-->
+        <!--color: #9fccff !important;-->
+        <!--caret-color: #9fccff !important;-->
+    <!--}-->
+
+    <!--.v-application .accent.darken-1 {-->
+        <!--background-color: #6596e2 !important;-->
+        <!--border-color: #6596e2 !important;-->
+    <!--}-->
+
+    <!--.v-application .accent&#45;&#45;text.text&#45;&#45;darken-1 {-->
+        <!--color: #6596e2 !important;-->
+        <!--caret-color: #6596e2 !important;-->
+    <!--}-->
+
+    <!--.v-application .accent.darken-2 {-->
+        <!--background-color: #467dc6 !important;-->
+        <!--border-color: #467dc6 !important;-->
+    <!--}-->
+
+    <!--.v-application .accent&#45;&#45;text.text&#45;&#45;darken-2 {-->
+        <!--color: #467dc6 !important;-->
+        <!--caret-color: #467dc6 !important;-->
+    <!--}-->
+
+    <!--.v-application .accent.darken-3 {-->
+        <!--background-color: #2364aa !important;-->
+        <!--border-color: #2364aa !important;-->
+    <!--}-->
+
+    <!--.v-application .accent&#45;&#45;text.text&#45;&#45;darken-3 {-->
+        <!--color: #2364aa !important;-->
+        <!--caret-color: #2364aa !important;-->
+    <!--}-->
+
+    <!--.v-application .accent.darken-4 {-->
+        <!--background-color: #004c90 !important;-->
+        <!--border-color: #004c90 !important;-->
+    <!--}-->
+
+    <!--.v-application .accent&#45;&#45;text.text&#45;&#45;darken-4 {-->
+        <!--color: #004c90 !important;-->
+        <!--caret-color: #004c90 !important;-->
+    <!--}-->
+
+    <!--.v-application .error {-->
+        <!--background-color: #ff6a85 !important;-->
+        <!--border-color: #ff6a85 !important;-->
+    <!--}-->
+
+    <!--.v-application .error&#45;&#45;text {-->
+        <!--color: #ff6a85 !important;-->
+        <!--caret-color: #ff6a85 !important;-->
+    <!--}-->
+
+    <!--.v-application .error.lighten-5 {-->
+        <!--background-color: #fffaff !important;-->
+        <!--border-color: #fffaff !important;-->
+    <!--}-->
+
+    <!--.v-application .error&#45;&#45;text.text&#45;&#45;lighten-5 {-->
+        <!--color: #fffaff !important;-->
+        <!--caret-color: #fffaff !important;-->
+    <!--}-->
+
+    <!--.v-application .error.lighten-4 {-->
+        <!--background-color: #ffdcf2 !important;-->
+        <!--border-color: #ffdcf2 !important;-->
+    <!--}-->
+
+    <!--.v-application .error&#45;&#45;text.text&#45;&#45;lighten-4 {-->
+        <!--color: #ffdcf2 !important;-->
+        <!--caret-color: #ffdcf2 !important;-->
+    <!--}-->
+
+    <!--.v-application .error.lighten-3 {-->
+        <!--background-color: #ffbfd6 !important;-->
+        <!--border-color: #ffbfd6 !important;-->
+    <!--}-->
+
+    <!--.v-application .error&#45;&#45;text.text&#45;&#45;lighten-3 {-->
+        <!--color: #ffbfd6 !important;-->
+        <!--caret-color: #ffbfd6 !important;-->
+    <!--}-->
+
+    <!--.v-application .error.lighten-2 {-->
+        <!--background-color: #ffa2ba !important;-->
+        <!--border-color: #ffa2ba !important;-->
+    <!--}-->
+
+    <!--.v-application .error&#45;&#45;text.text&#45;&#45;lighten-2 {-->
+        <!--color: #ffa2ba !important;-->
+        <!--caret-color: #ffa2ba !important;-->
+    <!--}-->
+
+    <!--.v-application .error.lighten-1 {-->
+        <!--background-color: #ff869f !important;-->
+        <!--border-color: #ff869f !important;-->
+    <!--}-->
+
+    <!--.v-application .error&#45;&#45;text.text&#45;&#45;lighten-1 {-->
+        <!--color: #ff869f !important;-->
+        <!--caret-color: #ff869f !important;-->
+    <!--}-->
+
+    <!--.v-application .error.darken-1 {-->
+        <!--background-color: #e04e6c !important;-->
+        <!--border-color: #e04e6c !important;-->
+    <!--}-->
+
+    <!--.v-application .error&#45;&#45;text.text&#45;&#45;darken-1 {-->
+        <!--color: #e04e6c !important;-->
+        <!--caret-color: #e04e6c !important;-->
+    <!--}-->
+
+    <!--.v-application .error.darken-2 {-->
+        <!--background-color: #c13054 !important;-->
+        <!--border-color: #c13054 !important;-->
+    <!--}-->
+
+    <!--.v-application .error&#45;&#45;text.text&#45;&#45;darken-2 {-->
+        <!--color: #c13054 !important;-->
+        <!--caret-color: #c13054 !important;-->
+    <!--}-->
+
+    <!--.v-application .error.darken-3 {-->
+        <!--background-color: #a3033d !important;-->
+        <!--border-color: #a3033d !important;-->
+    <!--}-->
+
+    <!--.v-application .error&#45;&#45;text.text&#45;&#45;darken-3 {-->
+        <!--color: #a3033d !important;-->
+        <!--caret-color: #a3033d !important;-->
+    <!--}-->
+
+    <!--.v-application .error.darken-4 {-->
+        <!--background-color: #850027 !important;-->
+        <!--border-color: #850027 !important;-->
+    <!--}-->
+
+    <!--.v-application .error&#45;&#45;text.text&#45;&#45;darken-4 {-->
+        <!--color: #850027 !important;-->
+        <!--caret-color: #850027 !important;-->
+    <!--}-->
+
+    <!--.v-application .info {-->
+        <!--background-color: #2196f3 !important;-->
+        <!--border-color: #2196f3 !important;-->
+    <!--}-->
+
+    <!--.v-application .info&#45;&#45;text {-->
+        <!--color: #2196f3 !important;-->
+        <!--caret-color: #2196f3 !important;-->
+    <!--}-->
+
+    <!--.v-application .info.lighten-5 {-->
+        <!--background-color: #d4ffff !important;-->
+        <!--border-color: #d4ffff !important;-->
+    <!--}-->
+
+    <!--.v-application .info&#45;&#45;text.text&#45;&#45;lighten-5 {-->
+        <!--color: #d4ffff !important;-->
+        <!--caret-color: #d4ffff !important;-->
+    <!--}-->
+
+    <!--.v-application .info.lighten-4 {-->
+        <!--background-color: #b5ffff !important;-->
+        <!--border-color: #b5ffff !important;-->
+    <!--}-->
+
+    <!--.v-application .info&#45;&#45;text.text&#45;&#45;lighten-4 {-->
+        <!--color: #b5ffff !important;-->
+        <!--caret-color: #b5ffff !important;-->
+    <!--}-->
+
+    <!--.v-application .info.lighten-3 {-->
+        <!--background-color: #95e8ff !important;-->
+        <!--border-color: #95e8ff !important;-->
+    <!--}-->
+
+    <!--.v-application .info&#45;&#45;text.text&#45;&#45;lighten-3 {-->
+        <!--color: #95e8ff !important;-->
+        <!--caret-color: #95e8ff !important;-->
+    <!--}-->
+
+    <!--.v-application .info.lighten-2 {-->
+        <!--background-color: #75ccff !important;-->
+        <!--border-color: #75ccff !important;-->
+    <!--}-->
+
+    <!--.v-application .info&#45;&#45;text.text&#45;&#45;lighten-2 {-->
+        <!--color: #75ccff !important;-->
+        <!--caret-color: #75ccff !important;-->
+    <!--}-->
+
+    <!--.v-application .info.lighten-1 {-->
+        <!--background-color: #51b0ff !important;-->
+        <!--border-color: #51b0ff !important;-->
+    <!--}-->
+
+    <!--.v-application .info&#45;&#45;text.text&#45;&#45;lighten-1 {-->
+        <!--color: #51b0ff !important;-->
+        <!--caret-color: #51b0ff !important;-->
+    <!--}-->
+
+    <!--.v-application .info.darken-1 {-->
+        <!--background-color: #007cd6 !important;-->
+        <!--border-color: #007cd6 !important;-->
+    <!--}-->
+
+    <!--.v-application .info&#45;&#45;text.text&#45;&#45;darken-1 {-->
+        <!--color: #007cd6 !important;-->
+        <!--caret-color: #007cd6 !important;-->
+    <!--}-->
+
+    <!--.v-application .info.darken-2 {-->
+        <!--background-color: #0064ba !important;-->
+        <!--border-color: #0064ba !important;-->
+    <!--}-->
+
+    <!--.v-application .info&#45;&#45;text.text&#45;&#45;darken-2 {-->
+        <!--color: #0064ba !important;-->
+        <!--caret-color: #0064ba !important;-->
+    <!--}-->
+
+    <!--.v-application .info.darken-3 {-->
+        <!--background-color: #004d9f !important;-->
+        <!--border-color: #004d9f !important;-->
+    <!--}-->
+
+    <!--.v-application .info&#45;&#45;text.text&#45;&#45;darken-3 {-->
+        <!--color: #004d9f !important;-->
+        <!--caret-color: #004d9f !important;-->
+    <!--}-->
+
+    <!--.v-application .info.darken-4 {-->
+        <!--background-color: #003784 !important;-->
+        <!--border-color: #003784 !important;-->
+    <!--}-->
+
+    <!--.v-application .info&#45;&#45;text.text&#45;&#45;darken-4 {-->
+        <!--color: #003784 !important;-->
+        <!--caret-color: #003784 !important;-->
+    <!--}-->
+
+    <!--.v-application .success {-->
+        <!--background-color: #4caf50 !important;-->
+        <!--border-color: #4caf50 !important;-->
+    <!--}-->
+
+    <!--.v-application .success&#45;&#45;text {-->
+        <!--color: #4caf50 !important;-->
+        <!--caret-color: #4caf50 !important;-->
+    <!--}-->
+
+    <!--.v-application .success.lighten-5 {-->
+        <!--background-color: #dcffd6 !important;-->
+        <!--border-color: #dcffd6 !important;-->
+    <!--}-->
+
+    <!--.v-application .success&#45;&#45;text.text&#45;&#45;lighten-5 {-->
+        <!--color: #dcffd6 !important;-->
+        <!--caret-color: #dcffd6 !important;-->
+    <!--}-->
+
+    <!--.v-application .success.lighten-4 {-->
+        <!--background-color: #beffba !important;-->
+        <!--border-color: #beffba !important;-->
+    <!--}-->
+
+    <!--.v-application .success&#45;&#45;text.text&#45;&#45;lighten-4 {-->
+        <!--color: #beffba !important;-->
+        <!--caret-color: #beffba !important;-->
+    <!--}-->
+
+    <!--.v-application .success.lighten-3 {-->
+        <!--background-color: #a2ff9e !important;-->
+        <!--border-color: #a2ff9e !important;-->
+    <!--}-->
+
+    <!--.v-application .success&#45;&#45;text.text&#45;&#45;lighten-3 {-->
+        <!--color: #a2ff9e !important;-->
+        <!--caret-color: #a2ff9e !important;-->
+    <!--}-->
+
+    <!--.v-application .success.lighten-2 {-->
+        <!--background-color: #85e783 !important;-->
+        <!--border-color: #85e783 !important;-->
+    <!--}-->
+
+    <!--.v-application .success&#45;&#45;text.text&#45;&#45;lighten-2 {-->
+        <!--color: #85e783 !important;-->
+        <!--caret-color: #85e783 !important;-->
+    <!--}-->
+
+    <!--.v-application .success.lighten-1 {-->
+        <!--background-color: #69cb69 !important;-->
+        <!--border-color: #69cb69 !important;-->
+    <!--}-->
+
+    <!--.v-application .success&#45;&#45;text.text&#45;&#45;lighten-1 {-->
+        <!--color: #69cb69 !important;-->
+        <!--caret-color: #69cb69 !important;-->
+    <!--}-->
+
+    <!--.v-application .success.darken-1 {-->
+        <!--background-color: #2d9437 !important;-->
+        <!--border-color: #2d9437 !important;-->
+    <!--}-->
+
+    <!--.v-application .success&#45;&#45;text.text&#45;&#45;darken-1 {-->
+        <!--color: #2d9437 !important;-->
+        <!--caret-color: #2d9437 !important;-->
+    <!--}-->
+
+    <!--.v-application .success.darken-2 {-->
+        <!--background-color: #00791e !important;-->
+        <!--border-color: #00791e !important;-->
+    <!--}-->
+
+    <!--.v-application .success&#45;&#45;text.text&#45;&#45;darken-2 {-->
+        <!--color: #00791e !important;-->
+        <!--caret-color: #00791e !important;-->
+    <!--}-->
+
+    <!--.v-application .success.darken-3 {-->
+        <!--background-color: #006000 !important;-->
+        <!--border-color: #006000 !important;-->
+    <!--}-->
+
+    <!--.v-application .success&#45;&#45;text.text&#45;&#45;darken-3 {-->
+        <!--color: #006000 !important;-->
+        <!--caret-color: #006000 !important;-->
+    <!--}-->
+
+    <!--.v-application .success.darken-4 {-->
+        <!--background-color: #004700 !important;-->
+        <!--border-color: #004700 !important;-->
+    <!--}-->
+
+    <!--.v-application .success&#45;&#45;text.text&#45;&#45;darken-4 {-->
+        <!--color: #004700 !important;-->
+        <!--caret-color: #004700 !important;-->
+    <!--}-->
+
+    <!--.v-application .warning {-->
+        <!--background-color: #fb8c00 !important;-->
+        <!--border-color: #fb8c00 !important;-->
+    <!--}-->
+
+    <!--.v-application .warning&#45;&#45;text {-->
+        <!--color: #fb8c00 !important;-->
+        <!--caret-color: #fb8c00 !important;-->
+    <!--}-->
+
+    <!--.v-application .warning.lighten-5 {-->
+        <!--background-color: #ffff9e !important;-->
+        <!--border-color: #ffff9e !important;-->
+    <!--}-->
+
+    <!--.v-application .warning&#45;&#45;text.text&#45;&#45;lighten-5 {-->
+        <!--color: #ffff9e !important;-->
+        <!--caret-color: #ffff9e !important;-->
+    <!--}-->
+
+    <!--.v-application .warning.lighten-4 {-->
+        <!--background-color: #fffb82 !important;-->
+        <!--border-color: #fffb82 !important;-->
+    <!--}-->
+
+    <!--.v-application .warning&#45;&#45;text.text&#45;&#45;lighten-4 {-->
+        <!--color: #fffb82 !important;-->
+        <!--caret-color: #fffb82 !important;-->
+    <!--}-->
+
+    <!--.v-application .warning.lighten-3 {-->
+        <!--background-color: #ffdf67 !important;-->
+        <!--border-color: #ffdf67 !important;-->
+    <!--}-->
+
+    <!--.v-application .warning&#45;&#45;text.text&#45;&#45;lighten-3 {-->
+        <!--color: #ffdf67 !important;-->
+        <!--caret-color: #ffdf67 !important;-->
+    <!--}-->
+
+    <!--.v-application .warning.lighten-2 {-->
+        <!--background-color: #ffc24b !important;-->
+        <!--border-color: #ffc24b !important;-->
+    <!--}-->
+
+    <!--.v-application .warning&#45;&#45;text.text&#45;&#45;lighten-2 {-->
+        <!--color: #ffc24b !important;-->
+        <!--caret-color: #ffc24b !important;-->
+    <!--}-->
+
+    <!--.v-application .warning.lighten-1 {-->
+        <!--background-color: #ffa72d !important;-->
+        <!--border-color: #ffa72d !important;-->
+    <!--}-->
+
+    <!--.v-application .warning&#45;&#45;text.text&#45;&#45;lighten-1 {-->
+        <!--color: #ffa72d !important;-->
+        <!--caret-color: #ffa72d !important;-->
+    <!--}-->
+
+    <!--.v-application .warning.darken-1 {-->
+        <!--background-color: #db7200 !important;-->
+        <!--border-color: #db7200 !important;-->
+    <!--}-->
+
+    <!--.v-application .warning&#45;&#45;text.text&#45;&#45;darken-1 {-->
+        <!--color: #db7200 !important;-->
+        <!--caret-color: #db7200 !important;-->
+    <!--}-->
+
+    <!--.v-application .warning.darken-2 {-->
+        <!--background-color: #bb5900 !important;-->
+        <!--border-color: #bb5900 !important;-->
+    <!--}-->
+
+    <!--.v-application .warning&#45;&#45;text.text&#45;&#45;darken-2 {-->
+        <!--color: #bb5900 !important;-->
+        <!--caret-color: #bb5900 !important;-->
+    <!--}-->
+
+    <!--.v-application .warning.darken-3 {-->
+        <!--background-color: #9d4000 !important;-->
+        <!--border-color: #9d4000 !important;-->
+    <!--}-->
+
+    <!--.v-application .warning&#45;&#45;text.text&#45;&#45;darken-3 {-->
+        <!--color: #9d4000 !important;-->
+        <!--caret-color: #9d4000 !important;-->
+    <!--}-->
+
+    <!--.v-application .warning.darken-4 {-->
+        <!--background-color: #802700 !important;-->
+        <!--border-color: #802700 !important;-->
+    <!--}-->
+
+    <!--.v-application .warning&#45;&#45;text.text&#45;&#45;darken-4 {-->
+        <!--color: #802700 !important;-->
+        <!--caret-color: #802700 !important;-->
+    <!--}-->
+
+    <!--.v-application .primaryVarient {-->
+        <!--background-color: #3ce7ae !important;-->
+        <!--border-color: #3ce7ae !important;-->
+    <!--}-->
+
+    <!--.v-application .primaryVarient&#45;&#45;text {-->
+        <!--color: #3ce7ae !important;-->
+        <!--caret-color: #3ce7ae !important;-->
+    <!--}-->
+
+    <!--.v-application .primaryVarient.lighten-5 {-->
+        <!--background-color: #e0ffff !important;-->
+        <!--border-color: #e0ffff !important;-->
+    <!--}-->
+
+    <!--.v-application .primaryVarient&#45;&#45;text.text&#45;&#45;lighten-5 {-->
+        <!--color: #e0ffff !important;-->
+        <!--caret-color: #e0ffff !important;-->
+    <!--}-->
+
+    <!--.v-application .primaryVarient.lighten-4 {-->
+        <!--background-color: #c1ffff !important;-->
+        <!--border-color: #c1ffff !important;-->
+    <!--}-->
+
+    <!--.v-application .primaryVarient&#45;&#45;text.text&#45;&#45;lighten-4 {-->
+        <!--color: #c1ffff !important;-->
+        <!--caret-color: #c1ffff !important;-->
+    <!--}-->
+
+    <!--.v-application .primaryVarient.lighten-3 {-->
+        <!--background-color: #a2ffff !important;-->
+        <!--border-color: #a2ffff !important;-->
+    <!--}-->
+
+    <!--.v-application .primaryVarient&#45;&#45;text.text&#45;&#45;lighten-3 {-->
+        <!--color: #a2ffff !important;-->
+        <!--caret-color: #a2ffff !important;-->
+    <!--}-->
+
+    <!--.v-application .primaryVarient.lighten-2 {-->
+        <!--background-color: #83ffe6 !important;-->
+        <!--border-color: #83ffe6 !important;-->
+    <!--}-->
+
+    <!--.v-application .primaryVarient&#45;&#45;text.text&#45;&#45;lighten-2 {-->
+        <!--color: #83ffe6 !important;-->
+        <!--caret-color: #83ffe6 !important;-->
+    <!--}-->
+
+    <!--.v-application .primaryVarient.lighten-1 {-->
+        <!--background-color: #62ffc9 !important;-->
+        <!--border-color: #62ffc9 !important;-->
+    <!--}-->
+
+    <!--.v-application .primaryVarient&#45;&#45;text.text&#45;&#45;lighten-1 {-->
+        <!--color: #62ffc9 !important;-->
+        <!--caret-color: #62ffc9 !important;-->
+    <!--}-->
+
+    <!--.v-application .primaryVarient.darken-1 {-->
+        <!--background-color: #00ca93 !important;-->
+        <!--border-color: #00ca93 !important;-->
+    <!--}-->
+
+    <!--.v-application .primaryVarient&#45;&#45;text.text&#45;&#45;darken-1 {-->
+        <!--color: #00ca93 !important;-->
+        <!--caret-color: #00ca93 !important;-->
+    <!--}-->
+
+    <!--.v-application .primaryVarient.darken-2 {-->
+        <!--background-color: #00ae79 !important;-->
+        <!--border-color: #00ae79 !important;-->
+    <!--}-->
+
+    <!--.v-application .primaryVarient&#45;&#45;text.text&#45;&#45;darken-2 {-->
+        <!--color: #00ae79 !important;-->
+        <!--caret-color: #00ae79 !important;-->
+    <!--}-->
+
+    <!--.v-application .primaryVarient.darken-3 {-->
+        <!--background-color: #009361 !important;-->
+        <!--border-color: #009361 !important;-->
+    <!--}-->
+
+    <!--.v-application .primaryVarient&#45;&#45;text.text&#45;&#45;darken-3 {-->
+        <!--color: #009361 !important;-->
+        <!--caret-color: #009361 !important;-->
+    <!--}-->
+
+    <!--.v-application .primaryVarient.darken-4 {-->
+        <!--background-color: #007849 !important;-->
+        <!--border-color: #007849 !important;-->
+    <!--}-->
+
+    <!--.v-application .primaryVarient&#45;&#45;text.text&#45;&#45;darken-4 {-->
+        <!--color: #007849 !important;-->
+        <!--caret-color: #007849 !important;-->
+    <!--}-->
+
+    <!--.v-application .secondaryVarient {-->
+        <!--background-color: #076877 !important;-->
+        <!--border-color: #076877 !important;-->
+    <!--}-->
+
+    <!--.v-application .secondaryVarient&#45;&#45;text {-->
+        <!--color: #076877 !important;-->
+        <!--caret-color: #076877 !important;-->
+    <!--}-->
+
+    <!--.v-application .secondaryVarient.lighten-5 {-->
+        <!--background-color: #a3eeff !important;-->
+        <!--border-color: #a3eeff !important;-->
+    <!--}-->
+
+    <!--.v-application .secondaryVarient&#45;&#45;text.text&#45;&#45;lighten-5 {-->
+        <!--color: #a3eeff !important;-->
+        <!--caret-color: #a3eeff !important;-->
+    <!--}-->
+
+    <!--.v-application .secondaryVarient.lighten-4 {-->
+        <!--background-color: #87d2e3 !important;-->
+        <!--border-color: #87d2e3 !important;-->
+    <!--}-->
+
+    <!--.v-application .secondaryVarient&#45;&#45;text.text&#45;&#45;lighten-4 {-->
+        <!--color: #87d2e3 !important;-->
+        <!--caret-color: #87d2e3 !important;-->
+    <!--}-->
+
+    <!--.v-application .secondaryVarient.lighten-3 {-->
+        <!--background-color: #6bb6c7 !important;-->
+        <!--border-color: #6bb6c7 !important;-->
+    <!--}-->
+
+    <!--.v-application .secondaryVarient&#45;&#45;text.text&#45;&#45;lighten-3 {-->
+        <!--color: #6bb6c7 !important;-->
+        <!--caret-color: #6bb6c7 !important;-->
+    <!--}-->
+
+    <!--.v-application .secondaryVarient.lighten-2 {-->
+        <!--background-color: #4f9bab !important;-->
+        <!--border-color: #4f9bab !important;-->
+    <!--}-->
+
+    <!--.v-application .secondaryVarient&#45;&#45;text.text&#45;&#45;lighten-2 {-->
+        <!--color: #4f9bab !important;-->
+        <!--caret-color: #4f9bab !important;-->
+    <!--}-->
+
+    <!--.v-application .secondaryVarient.lighten-1 {-->
+        <!--background-color: #318191 !important;-->
+        <!--border-color: #318191 !important;-->
+    <!--}-->
+
+    <!--.v-application .secondaryVarient&#45;&#45;text.text&#45;&#45;lighten-1 {-->
+        <!--color: #318191 !important;-->
+        <!--caret-color: #318191 !important;-->
+    <!--}-->
+
+    <!--.v-application .secondaryVarient.darken-1 {-->
+        <!--background-color: #00505e !important;-->
+        <!--border-color: #00505e !important;-->
+    <!--}-->
+
+    <!--.v-application .secondaryVarient&#45;&#45;text.text&#45;&#45;darken-1 {-->
+        <!--color: #00505e !important;-->
+        <!--caret-color: #00505e !important;-->
+    <!--}-->
+
+    <!--.v-application .secondaryVarient.darken-2 {-->
+        <!--background-color: #003947 !important;-->
+        <!--border-color: #003947 !important;-->
+    <!--}-->
+
+    <!--.v-application .secondaryVarient&#45;&#45;text.text&#45;&#45;darken-2 {-->
+        <!--color: #003947 !important;-->
+        <!--caret-color: #003947 !important;-->
+    <!--}-->
+
+    <!--.v-application .secondaryVarient.darken-3 {-->
+        <!--background-color: #002330 !important;-->
+        <!--border-color: #002330 !important;-->
+    <!--}-->
+
+    <!--.v-application .secondaryVarient&#45;&#45;text.text&#45;&#45;darken-3 {-->
+        <!--color: #002330 !important;-->
+        <!--caret-color: #002330 !important;-->
+    <!--}-->
+
+    <!--.v-application .secondaryVarient.darken-4 {-->
+        <!--background-color: #00101c !important;-->
+        <!--border-color: #00101c !important;-->
+    <!--}-->
+
+    <!--.v-application .secondaryVarient&#45;&#45;text.text&#45;&#45;darken-4 {-->
+        <!--color: #00101c !important;-->
+        <!--caret-color: #00101c !important;-->
+    <!--}-->
+
+    <!--.v-application .bg {-->
+        <!--background-color: #efefe1 !important;-->
+        <!--border-color: #efefe1 !important;-->
+    <!--}-->
+
+    <!--.v-application .bg&#45;&#45;text {-->
+        <!--color: #efefe1 !important;-->
+        <!--caret-color: #efefe1 !important;-->
+    <!--}-->
+
+    <!--.v-application .bg.lighten-5 {-->
+        <!--background-color: #ffffff !important;-->
+        <!--border-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .bg&#45;&#45;text.text&#45;&#45;lighten-5 {-->
+        <!--color: #ffffff !important;-->
+        <!--caret-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .bg.lighten-4 {-->
+        <!--background-color: #ffffff !important;-->
+        <!--border-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .bg&#45;&#45;text.text&#45;&#45;lighten-4 {-->
+        <!--color: #ffffff !important;-->
+        <!--caret-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .bg.lighten-3 {-->
+        <!--background-color: #ffffff !important;-->
+        <!--border-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .bg&#45;&#45;text.text&#45;&#45;lighten-3 {-->
+        <!--color: #ffffff !important;-->
+        <!--caret-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .bg.lighten-2 {-->
+        <!--background-color: #ffffff !important;-->
+        <!--border-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .bg&#45;&#45;text.text&#45;&#45;lighten-2 {-->
+        <!--color: #ffffff !important;-->
+        <!--caret-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .bg.lighten-1 {-->
+        <!--background-color: #fffffe !important;-->
+        <!--border-color: #fffffe !important;-->
+    <!--}-->
+
+    <!--.v-application .bg&#45;&#45;text.text&#45;&#45;lighten-1 {-->
+        <!--color: #fffffe !important;-->
+        <!--caret-color: #fffffe !important;-->
+    <!--}-->
+
+    <!--.v-application .bg.darken-1 {-->
+        <!--background-color: #d3d3c5 !important;-->
+        <!--border-color: #d3d3c5 !important;-->
+    <!--}-->
+
+    <!--.v-application .bg&#45;&#45;text.text&#45;&#45;darken-1 {-->
+        <!--color: #d3d3c5 !important;-->
+        <!--caret-color: #d3d3c5 !important;-->
+    <!--}-->
+
+    <!--.v-application .bg.darken-2 {-->
+        <!--background-color: #b7b7aa !important;-->
+        <!--border-color: #b7b7aa !important;-->
+    <!--}-->
+
+    <!--.v-application .bg&#45;&#45;text.text&#45;&#45;darken-2 {-->
+        <!--color: #b7b7aa !important;-->
+        <!--caret-color: #b7b7aa !important;-->
+    <!--}-->
+
+    <!--.v-application .bg.darken-3 {-->
+        <!--background-color: #9c9c8f !important;-->
+        <!--border-color: #9c9c8f !important;-->
+    <!--}-->
+
+    <!--.v-application .bg&#45;&#45;text.text&#45;&#45;darken-3 {-->
+        <!--color: #9c9c8f !important;-->
+        <!--caret-color: #9c9c8f !important;-->
+    <!--}-->
+
+    <!--.v-application .bg.darken-4 {-->
+        <!--background-color: #828276 !important;-->
+        <!--border-color: #828276 !important;-->
+    <!--}-->
+
+    <!--.v-application .bg&#45;&#45;text.text&#45;&#45;darken-4 {-->
+        <!--color: #828276 !important;-->
+        <!--caret-color: #828276 !important;-->
+    <!--}-->
+
+    <!--.v-application .light {-->
+        <!--background-color: #ffffff !important;-->
+        <!--border-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .light&#45;&#45;text {-->
+        <!--color: #ffffff !important;-->
+        <!--caret-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .light.lighten-5 {-->
+        <!--background-color: #ffffff !important;-->
+        <!--border-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .light&#45;&#45;text.text&#45;&#45;lighten-5 {-->
+        <!--color: #ffffff !important;-->
+        <!--caret-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .light.lighten-4 {-->
+        <!--background-color: #ffffff !important;-->
+        <!--border-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .light&#45;&#45;text.text&#45;&#45;lighten-4 {-->
+        <!--color: #ffffff !important;-->
+        <!--caret-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .light.lighten-3 {-->
+        <!--background-color: #ffffff !important;-->
+        <!--border-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .light&#45;&#45;text.text&#45;&#45;lighten-3 {-->
+        <!--color: #ffffff !important;-->
+        <!--caret-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .light.lighten-2 {-->
+        <!--background-color: #ffffff !important;-->
+        <!--border-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .light&#45;&#45;text.text&#45;&#45;lighten-2 {-->
+        <!--color: #ffffff !important;-->
+        <!--caret-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .light.lighten-1 {-->
+        <!--background-color: #ffffff !important;-->
+        <!--border-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .light&#45;&#45;text.text&#45;&#45;lighten-1 {-->
+        <!--color: #ffffff !important;-->
+        <!--caret-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .light.darken-1 {-->
+        <!--background-color: #e2e2e2 !important;-->
+        <!--border-color: #e2e2e2 !important;-->
+    <!--}-->
+
+    <!--.v-application .light&#45;&#45;text.text&#45;&#45;darken-1 {-->
+        <!--color: #e2e2e2 !important;-->
+        <!--caret-color: #e2e2e2 !important;-->
+    <!--}-->
+
+    <!--.v-application .light.darken-2 {-->
+        <!--background-color: #c6c6c6 !important;-->
+        <!--border-color: #c6c6c6 !important;-->
+    <!--}-->
+
+    <!--.v-application .light&#45;&#45;text.text&#45;&#45;darken-2 {-->
+        <!--color: #c6c6c6 !important;-->
+        <!--caret-color: #c6c6c6 !important;-->
+    <!--}-->
+
+    <!--.v-application .light.darken-3 {-->
+        <!--background-color: #ababab !important;-->
+        <!--border-color: #ababab !important;-->
+    <!--}-->
+
+    <!--.v-application .light&#45;&#45;text.text&#45;&#45;darken-3 {-->
+        <!--color: #ababab !important;-->
+        <!--caret-color: #ababab !important;-->
+    <!--}-->
+
+    <!--.v-application .light.darken-4 {-->
+        <!--background-color: #919191 !important;-->
+        <!--border-color: #919191 !important;-->
+    <!--}-->
+
+    <!--.v-application .light&#45;&#45;text.text&#45;&#45;darken-4 {-->
+        <!--color: #919191 !important;-->
+        <!--caret-color: #919191 !important;-->
+    <!--}-->
+
+    <!--.v-application .surface {-->
+        <!--background-color: #ffffff !important;-->
+        <!--border-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .surface&#45;&#45;text {-->
+        <!--color: #ffffff !important;-->
+        <!--caret-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .surface.lighten-5 {-->
+        <!--background-color: #ffffff !important;-->
+        <!--border-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .surface&#45;&#45;text.text&#45;&#45;lighten-5 {-->
+        <!--color: #ffffff !important;-->
+        <!--caret-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .surface.lighten-4 {-->
+        <!--background-color: #ffffff !important;-->
+        <!--border-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .surface&#45;&#45;text.text&#45;&#45;lighten-4 {-->
+        <!--color: #ffffff !important;-->
+        <!--caret-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .surface.lighten-3 {-->
+        <!--background-color: #ffffff !important;-->
+        <!--border-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .surface&#45;&#45;text.text&#45;&#45;lighten-3 {-->
+        <!--color: #ffffff !important;-->
+        <!--caret-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .surface.lighten-2 {-->
+        <!--background-color: #ffffff !important;-->
+        <!--border-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .surface&#45;&#45;text.text&#45;&#45;lighten-2 {-->
+        <!--color: #ffffff !important;-->
+        <!--caret-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .surface.lighten-1 {-->
+        <!--background-color: #ffffff !important;-->
+        <!--border-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .surface&#45;&#45;text.text&#45;&#45;lighten-1 {-->
+        <!--color: #ffffff !important;-->
+        <!--caret-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .surface.darken-1 {-->
+        <!--background-color: #e2e2e2 !important;-->
+        <!--border-color: #e2e2e2 !important;-->
+    <!--}-->
+
+    <!--.v-application .surface&#45;&#45;text.text&#45;&#45;darken-1 {-->
+        <!--color: #e2e2e2 !important;-->
+        <!--caret-color: #e2e2e2 !important;-->
+    <!--}-->
+
+    <!--.v-application .surface.darken-2 {-->
+        <!--background-color: #c6c6c6 !important;-->
+        <!--border-color: #c6c6c6 !important;-->
+    <!--}-->
+
+    <!--.v-application .surface&#45;&#45;text.text&#45;&#45;darken-2 {-->
+        <!--color: #c6c6c6 !important;-->
+        <!--caret-color: #c6c6c6 !important;-->
+    <!--}-->
+
+    <!--.v-application .surface.darken-3 {-->
+        <!--background-color: #ababab !important;-->
+        <!--border-color: #ababab !important;-->
+    <!--}-->
+
+    <!--.v-application .surface&#45;&#45;text.text&#45;&#45;darken-3 {-->
+        <!--color: #ababab !important;-->
+        <!--caret-color: #ababab !important;-->
+    <!--}-->
+
+    <!--.v-application .surface.darken-4 {-->
+        <!--background-color: #919191 !important;-->
+        <!--border-color: #919191 !important;-->
+    <!--}-->
+
+    <!--.v-application .surface&#45;&#45;text.text&#45;&#45;darken-4 {-->
+        <!--color: #919191 !important;-->
+        <!--caret-color: #919191 !important;-->
+    <!--}-->
+
+    <!--.v-application .onsurface {-->
+        <!--background-color: #171717 !important;-->
+        <!--border-color: #171717 !important;-->
+    <!--}-->
+
+    <!--.v-application .onsurface&#45;&#45;text {-->
+        <!--color: #171717 !important;-->
+        <!--caret-color: #171717 !important;-->
+    <!--}-->
+
+    <!--.v-application .onsurface.lighten-5 {-->
+        <!--background-color: #8b8b8b !important;-->
+        <!--border-color: #8b8b8b !important;-->
+    <!--}-->
+
+    <!--.v-application .onsurface&#45;&#45;text.text&#45;&#45;lighten-5 {-->
+        <!--color: #8b8b8b !important;-->
+        <!--caret-color: #8b8b8b !important;-->
+    <!--}-->
+
+    <!--.v-application .onsurface.lighten-4 {-->
+        <!--background-color: #717171 !important;-->
+        <!--border-color: #717171 !important;-->
+    <!--}-->
+
+    <!--.v-application .onsurface&#45;&#45;text.text&#45;&#45;lighten-4 {-->
+        <!--color: #717171 !important;-->
+        <!--caret-color: #717171 !important;-->
+    <!--}-->
+
+    <!--.v-application .onsurface.lighten-3 {-->
+        <!--background-color: #595959 !important;-->
+        <!--border-color: #595959 !important;-->
+    <!--}-->
+
+    <!--.v-application .onsurface&#45;&#45;text.text&#45;&#45;lighten-3 {-->
+        <!--color: #595959 !important;-->
+        <!--caret-color: #595959 !important;-->
+    <!--}-->
+
+    <!--.v-application .onsurface.lighten-2 {-->
+        <!--background-color: #414141 !important;-->
+        <!--border-color: #414141 !important;-->
+    <!--}-->
+
+    <!--.v-application .onsurface&#45;&#45;text.text&#45;&#45;lighten-2 {-->
+        <!--color: #414141 !important;-->
+        <!--caret-color: #414141 !important;-->
+    <!--}-->
+
+    <!--.v-application .onsurface.lighten-1 {-->
+        <!--background-color: #2b2b2b !important;-->
+        <!--border-color: #2b2b2b !important;-->
+    <!--}-->
+
+    <!--.v-application .onsurface&#45;&#45;text.text&#45;&#45;lighten-1 {-->
+        <!--color: #2b2b2b !important;-->
+        <!--caret-color: #2b2b2b !important;-->
+    <!--}-->
+
+    <!--.v-application .onsurface.darken-1 {-->
+        <!--background-color: #000000 !important;-->
+        <!--border-color: #000000 !important;-->
+    <!--}-->
+
+    <!--.v-application .onsurface&#45;&#45;text.text&#45;&#45;darken-1 {-->
+        <!--color: #000000 !important;-->
+        <!--caret-color: #000000 !important;-->
+    <!--}-->
+
+    <!--.v-application .onsurface.darken-2 {-->
+        <!--background-color: #000000 !important;-->
+        <!--border-color: #000000 !important;-->
+    <!--}-->
+
+    <!--.v-application .onsurface&#45;&#45;text.text&#45;&#45;darken-2 {-->
+        <!--color: #000000 !important;-->
+        <!--caret-color: #000000 !important;-->
+    <!--}-->
+
+    <!--.v-application .onsurface.darken-3 {-->
+        <!--background-color: #000000 !important;-->
+        <!--border-color: #000000 !important;-->
+    <!--}-->
+
+    <!--.v-application .onsurface&#45;&#45;text.text&#45;&#45;darken-3 {-->
+        <!--color: #000000 !important;-->
+        <!--caret-color: #000000 !important;-->
+    <!--}-->
+
+    <!--.v-application .onsurface.darken-4 {-->
+        <!--background-color: #000000 !important;-->
+        <!--border-color: #000000 !important;-->
+    <!--}-->
+
+    <!--.v-application .onsurface&#45;&#45;text.text&#45;&#45;darken-4 {-->
+        <!--color: #000000 !important;-->
+        <!--caret-color: #000000 !important;-->
+    <!--}-->
+
+    <!--.v-application .lightbg {-->
+        <!--background-color: #efefe1 !important;-->
+        <!--border-color: #efefe1 !important;-->
+    <!--}-->
+
+    <!--.v-application .lightbg&#45;&#45;text {-->
+        <!--color: #efefe1 !important;-->
+        <!--caret-color: #efefe1 !important;-->
+    <!--}-->
+
+    <!--.v-application .lightbg.lighten-5 {-->
+        <!--background-color: #ffffff !important;-->
+        <!--border-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .lightbg&#45;&#45;text.text&#45;&#45;lighten-5 {-->
+        <!--color: #ffffff !important;-->
+        <!--caret-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .lightbg.lighten-4 {-->
+        <!--background-color: #ffffff !important;-->
+        <!--border-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .lightbg&#45;&#45;text.text&#45;&#45;lighten-4 {-->
+        <!--color: #ffffff !important;-->
+        <!--caret-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .lightbg.lighten-3 {-->
+        <!--background-color: #ffffff !important;-->
+        <!--border-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .lightbg&#45;&#45;text.text&#45;&#45;lighten-3 {-->
+        <!--color: #ffffff !important;-->
+        <!--caret-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .lightbg.lighten-2 {-->
+        <!--background-color: #ffffff !important;-->
+        <!--border-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .lightbg&#45;&#45;text.text&#45;&#45;lighten-2 {-->
+        <!--color: #ffffff !important;-->
+        <!--caret-color: #ffffff !important;-->
+    <!--}-->
+
+    <!--.v-application .lightbg.lighten-1 {-->
+        <!--background-color: #fffffe !important;-->
+        <!--border-color: #fffffe !important;-->
+    <!--}-->
+
+    <!--.v-application .lightbg&#45;&#45;text.text&#45;&#45;lighten-1 {-->
+        <!--color: #fffffe !important;-->
+        <!--caret-color: #fffffe !important;-->
+    <!--}-->
+
+    <!--.v-application .lightbg.darken-1 {-->
+        <!--background-color: #d3d3c5 !important;-->
+        <!--border-color: #d3d3c5 !important;-->
+    <!--}-->
+
+    <!--.v-application .lightbg&#45;&#45;text.text&#45;&#45;darken-1 {-->
+        <!--color: #d3d3c5 !important;-->
+        <!--caret-color: #d3d3c5 !important;-->
+    <!--}-->
+
+    <!--.v-application .lightbg.darken-2 {-->
+        <!--background-color: #b7b7aa !important;-->
+        <!--border-color: #b7b7aa !important;-->
+    <!--}-->
+
+    <!--.v-application .lightbg&#45;&#45;text.text&#45;&#45;darken-2 {-->
+        <!--color: #b7b7aa !important;-->
+        <!--caret-color: #b7b7aa !important;-->
+    <!--}-->
+
+    <!--.v-application .lightbg.darken-3 {-->
+        <!--background-color: #9c9c8f !important;-->
+        <!--border-color: #9c9c8f !important;-->
+    <!--}-->
+
+    <!--.v-application .lightbg&#45;&#45;text.text&#45;&#45;darken-3 {-->
+        <!--color: #9c9c8f !important;-->
+        <!--caret-color: #9c9c8f !important;-->
+    <!--}-->
+
+    <!--.v-application .lightbg.darken-4 {-->
+        <!--background-color: #828276 !important;-->
+        <!--border-color: #828276 !important;-->
+    <!--}-->
+
+    <!--.v-application .lightbg&#45;&#45;text.text&#45;&#45;darken-4 {-->
+        <!--color: #828276 !important;-->
+        <!--caret-color: #828276 !important;-->
+    <!--}-->
+    <!--</style>-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/Dashboard.b41463e0.js"></script>-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-eb7cd68a.3ae0755f.js"></script>-->
+    <!--<link rel="stylesheet" type="text/css" href="{{doc.url}}/css/chunk-1ca34b3b.c3c7d211.css">-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-1ca34b3b.110ab570.js"></script>-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-77b41c82.1f408e50.js"></script>-->
+    <!--<link rel="stylesheet" type="text/css" href="{{doc.url}}/css/LiveOrder~Orders~Report~Table.bcd1af58.css">-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/LiveOrder~Orders~Report~Table.c8ef40da.js"></script>-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/Table.939034f7.js"></script>-->
+    <!--<link rel="stylesheet" type="text/css" href="{{doc.url}}/css/chunk-1c085e0c.e55a18ab.css">-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-1c085e0c.b97a17a6.js"></script>-->
+    <!--<link rel="stylesheet" type="text/css" href="{{doc.url}}/css/chunk-06c002b4.c1ae2e2c.css">-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-06c002b4.8e5d7f57.js"></script>-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-2d216257.9343dcf3.js"></script>-->
+    <!--<link rel="stylesheet" type="text/css" href="{{doc.url}}/css/chunk-58311277.757b7acf.css">-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-58311277.317f3356.js"></script>-->
+    <!--<link rel="stylesheet" type="text/css" href="{{doc.url}}/css/chunk-397f7945.5cd055f4.css">-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-397f7945.595f5ce9.js"></script>-->
+    <!--<link rel="stylesheet" type="text/css" href="{{doc.url}}/css/chunk-6d76daca.46e9f3ff.css">-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-6d76daca.a48ba97f.js"></script>-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/LiveOrder.f24a3892.js"></script>-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-dcb27e6a.0f25c464.js"></script>-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-019a3904.9061339c.js"></script>-->
+    <!--<link rel="stylesheet" type="text/css" href="{{doc.url}}/css/chunk-1d023ba2.bea06b04.css">-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-1d023ba2.c71dd9d9.js"></script>-->
+    <!--<link rel="stylesheet" type="text/css" href="{{doc.url}}/css/chunk-bb294078.e9e477ed.css">-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-bb294078.09fdcd43.js"></script>-->
+    <!--<link rel="stylesheet" type="text/css" href="{{doc.url}}/css/chunk-d58ff718.2695527c.css">-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-d58ff718.4790f1e8.js"></script>-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/Orders.36b5d327.js"></script>-->
+    <!--<link rel="stylesheet" type="text/css" href="{{doc.url}}/css/chunk-46593208.4eb0deb2.css">-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-46593208.ddf0fac9.js"></script>-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-709a386d.dc76ba9e.js"></script>-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-7099cc4a.b6004d08.js"></script>-->
+    <!--<link rel="stylesheet" type="text/css" href="{{doc.url}}/css/chunk-1da892bc.d37a3c29.css">-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-1da892bc.6c91c32f.js"></script>-->
+    <!--<link rel="stylesheet" type="text/css" href="{{doc.url}}/css/chunk-4f5e5554.4eb0deb2.css">-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-4f5e5554.92434fc6.js"></script>-->
+    <!--<link rel="stylesheet" type="text/css" href="{{doc.url}}/css/chunk-b15876f0.4eb0deb2.css">-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-b15876f0.2f0921a3.js"></script>-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-2fce7cdf.89058371.js"></script>-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-2fe2884a.c3c36228.js"></script>-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/FoodCategory.ebceca64.js"></script>-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-08aed91a.09189cfd.js"></script>-->
+    <!--<link rel="stylesheet" type="text/css" href="{{doc.url}}/css/chunk-071cefca.43a6d99c.css">-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-071cefca.b73b2d4f.js"></script>-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-2d2183d1.c6d7a397.js"></script>-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-005df544.f0994919.js"></script>-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-2d230530.aa5c59e6.js"></script>-->
+    <!--<link rel="stylesheet" type="text/css" href="{{doc.url}}/css/chunk-2fc8c564.8e3e5459.css">-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-2fc8c564.928f1c2c.js"></script>-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-4ebe59d9.aab825e9.js"></script>-->
+    <!--<link rel="stylesheet" type="text/css" href="{{doc.url}}/css/chunk-18f4f33a.43a6d99c.css">-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-18f4f33a.81c514e7.js"></script>-->
+    <!--<link rel="stylesheet" type="text/css" href="{{doc.url}}/css/Report.b12565ac.css">-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/Report.60a5939a.js"></script>-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-f37c8014.506625bc.js"></script>-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-8f33318c.419922d4.js"></script>-->
+    <!--<link rel="stylesheet" type="text/css" href="{{doc.url}}/css/chunk-63fbaee0.d47820e2.css">-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-63fbaee0.208e5ff3.js"></script>-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/Statitics.0cc91a14.js"></script>-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-5af607ef.0fd3e025.js"></script>-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-7f671fa0.4382f1b0.js"></script>-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-067ccb14.d7c9f410.js"></script>-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/PaymentDetails.7d13bfdc.js"></script>-->
+    <!--<link rel="stylesheet" type="text/css" href="{{doc.url}}/css/chunk-505a25da.4eb0deb2.css">-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-505a25da.dc9376e9.js"></script>-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-51262132.52f17fa8.js"></script>-->
+    <!--<link rel="stylesheet" type="text/css" href="{{doc.url}}/css/chunk-65598455.df9d9a7c.css">-->
+    <!--<script charset="utf-8" src="{{doc.url}}/js/chunk-65598455.7b7204de.js"></script>-->
+<!--</head>-->
+
+<div  class="page-form" style="height: 780px;caret-color: transparent;">
+
+    <table style="width: 100%;height:400px">
+        <tr>
+            <td colspan="2">
+                <div style="border: 1px solid black;height: 150px;width:100%;padding-top: 60px;font-weight: bold;font-size: 20px" class="text-center">
+                    IMAGE/LOGO HERE
+                </div>
+            </td>
+        </tr>
+        <tr style="background-color: lightgray" onclick="{{doc.dashboard}}">
+            <td class="text-center" >
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 16 16" width="24" height="24">
+                    <path d="M1.5 3.25c0-.966.784-1.75 1.75-1.75h2.5c.966 0 1.75.784 1.75 1.75v2.5A1.75 1.75 0 0 1 5.75 7.5h-2.5A1.75 1.75 0 0 1 1.5 5.75Zm7 0c0-.966.784-1.75 1.75-1.75h2.5c.966 0 1.75.784 1.75 1.75v2.5a1.75 1.75 0 0 1-1.75 1.75h-2.5A1.75 1.75 0 0 1 8.5 5.75Zm-7 7c0-.966.784-1.75 1.75-1.75h2.5c.966 0 1.75.784 1.75 1.75v2.5a1.75 1.75 0 0 1-1.75 1.75h-2.5a1.75 1.75 0 0 1-1.75-1.75Zm7 0c0-.966.784-1.75 1.75-1.75h2.5c.966 0 1.75.784 1.75 1.75v2.5a1.75 1.75 0 0 1-1.75 1.75h-2.5a1.75 1.75 0 0 1-1.75-1.75ZM3.25 3a.25.25 0 0 0-.25.25v2.5c0 .138.112.25.25.25h2.5A.25.25 0 0 0 6 5.75v-2.5A.25.25 0 0 0 5.75 3Zm7 0a.25.25 0 0 0-.25.25v2.5c0 .138.112.25.25.25h2.5a.25.25 0 0 0 .25-.25v-2.5a.25.25 0 0 0-.25-.25Zm-7 7a.25.25 0 0 0-.25.25v2.5c0 .138.112.25.25.25h2.5a.25.25 0 0 0 .25-.25v-2.5a.25.25 0 0 0-.25-.25Zm7 0a.25.25 0 0 0-.25.25v2.5c0 .138.112.25.25.25h2.5a.25.25 0 0 0 .25-.25v-2.5a.25.25 0 0 0-.25-.25Z"></path>
+                </svg>
+            </td>
+            <td style="width:90%;padding: 10px;font-weight: bold;font-size: 20px">
+                Dashboard
+
+            </td>
+        </tr>
+        <tr>
+            <td class="text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+                    <path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.217 0 16 .784 16 1.75v5.5a.75.75 0 0 1-1.5 0V6.5h-8v8h.75a.75.75 0 0 1 0 1.5h-5.5A1.75 1.75 0 0 1 0 14.25ZM1.5 6.5v7.75c0 .138.112.25.25.25H5v-8Zm5-1.5h8V1.75a.25.25 0 0 0-.25-.25H6.5ZM5 5V1.5H1.75a.25.25 0 0 0-.25.25V5Z"></path>
+                    <path d="m11.017 9.89-2.882 2.677a.249.249 0 0 0 0 .366l2.882 2.677a.25.25 0 0 0 .421-.183V13.5H12.5A3.5 3.5 0 0 0 16 10a.75.75 0 0 0-1.5 0 2 2 0 0 1-2 2h-1.062v-1.927a.25.25 0 0 0-.421-.183Z"></path>
+                </svg>
+
+            </td>
+            <td style="width:90%;padding: 10px;font-size: 16px">
+                Table
+
+            </td>
+        </tr>
+        <tr>
+            <td class="text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+                    <path d="M8.75 8.582v5.668a.75.75 0 0 1-1.5 0V8.582a1.75 1.75 0 1 1 1.5 0Zm3.983-7.125a.75.75 0 0 1 1.06.026A7.976 7.976 0 0 1 16 7c0 2.139-.84 4.083-2.207 5.517a.75.75 0 1 1-1.086-1.034A6.474 6.474 0 0 0 14.5 7a6.474 6.474 0 0 0-1.793-4.483.75.75 0 0 1 .026-1.06Zm-9.466 0c.3.286.312.76.026 1.06A6.474 6.474 0 0 0 1.5 7a6.47 6.47 0 0 0 1.793 4.483.75.75 0 0 1-1.086 1.034A7.973 7.973 0 0 1 0 7c0-2.139.84-4.083 2.207-5.517a.75.75 0 0 1 1.06-.026Zm8.556 2.321A4.988 4.988 0 0 1 13 7a4.988 4.988 0 0 1-1.177 3.222.75.75 0 1 1-1.146-.967A3.487 3.487 0 0 0 11.5 7c0-.86-.309-1.645-.823-2.255a.75.75 0 0 1 1.146-.967Zm-6.492.958A3.48 3.48 0 0 0 4.5 7a3.48 3.48 0 0 0 .823 2.255.75.75 0 0 1-1.146.967A4.981 4.981 0 0 1 3 7a4.982 4.982 0 0 1 1.188-3.236.75.75 0 1 1 1.143.972Z"></path>
+                </svg>
+            </td>
+            <td style="width:90%;padding: 10px;font-size: 16px">
+                Live Order
+
+            </td>
+        </tr>
+        <tr>
+            <td class="text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M3.604 3.089A.75.75 0 0 1 4 3.75V8.5h.75a.75.75 0 0 1 0 1.5h-3a.75.75 0 1 1 0-1.5h.75V5.151l-.334.223a.75.75 0 0 1-.832-1.248l1.5-1a.75.75 0 0 1 .77-.037ZM8.75 5.5a.75.75 0 0 0 0 1.5h11.5a.75.75 0 0 0 0-1.5H8.75Zm0 6a.75.75 0 0 0 0 1.5h11.5a.75.75 0 0 0 0-1.5H8.75Zm0 6a.75.75 0 0 0 0 1.5h11.5a.75.75 0 0 0 0-1.5H8.75ZM5.5 15.75c0-.704-.271-1.286-.72-1.686a2.302 2.302 0 0 0-1.53-.564c-.535 0-1.094.178-1.53.565-.449.399-.72.982-.72 1.685a.75.75 0 0 0 1.5 0c0-.296.104-.464.217-.564A.805.805 0 0 1 3.25 15c.215 0 .406.072.533.185.113.101.217.268.217.565 0 .332-.069.48-.21.657-.092.113-.216.24-.403.419l-.147.14c-.152.144-.33.313-.52.504l-1.5 1.5a.75.75 0 0 0-.22.53v.25c0 .414.336.75.75.75H5A.75.75 0 0 0 5 19H3.31l.47-.47c.176-.176.333-.324.48-.465l.165-.156a5.98 5.98 0 0 0 .536-.566c.358-.447.539-.925.539-1.593Z"></path>
+                </svg>
+            </td>
+            <td style="width:90%;padding: 10px;font-size: 16px">
+                Orders
+
+            </td>
+        </tr>
+        <tr>
+            <td class="text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+                    <path d="M5.75 2.5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2 14a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm1-6a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM2 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path>
+                </svg>
+            </td>
+            <td style="width:90%;padding:10px;font-size: 16px">
+                Catalog
+
+            </td>
+        </tr>
+        <tr>
+            <td class="text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+                    <path d="M1.5 1.75V13.5h13.75a.75.75 0 0 1 0 1.5H.75a.75.75 0 0 1-.75-.75V1.75a.75.75 0 0 1 1.5 0Zm14.28 2.53-5.25 5.25a.75.75 0 0 1-1.06 0L7 7.06 4.28 9.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.25-3.25a.75.75 0 0 1 1.06 0L10 7.94l4.72-4.72a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path>
+                </svg>
+            </td>
+            <td style="width:90%;padding: 10px;font-size: 16px">
+                Report
+
+            </td>
+        </tr>
+        <tr>
+            <td class="text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M11.063 1.456a1.749 1.749 0 0 1 1.874 0l8.383 5.316a1.751 1.751 0 0 1 0 2.956l-8.383 5.316a1.749 1.749 0 0 1-1.874 0L2.68 9.728a1.751 1.751 0 0 1 0-2.956Zm1.071 1.267a.25.25 0 0 0-.268 0L3.483 8.039a.25.25 0 0 0 0 .422l8.383 5.316a.25.25 0 0 0 .268 0l8.383-5.316a.25.25 0 0 0 0-.422Z"></path>
+                    <path d="M1.867 12.324a.75.75 0 0 1 1.035-.232l8.964 5.685a.25.25 0 0 0 .268 0l8.964-5.685a.75.75 0 0 1 .804 1.267l-8.965 5.685a1.749 1.749 0 0 1-1.874 0l-8.965-5.685a.75.75 0 0 1-.231-1.035Z"></path>
+                    <path d="M1.867 16.324a.75.75 0 0 1 1.035-.232l8.964 5.685a.25.25 0 0 0 .268 0l8.964-5.685a.75.75 0 0 1 .804 1.267l-8.965 5.685a1.749 1.749 0 0 1-1.874 0l-8.965-5.685a.75.75 0 0 1-.231-1.035Z"></path>
+                </svg>
+            </td>
+            <td style="width:90%;padding: 10px;font-size: 16px">
+                Stock
+
+            </td>
+        </tr>
+        <tr>
+            <td class="text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+                    <path d="M10.561 8.073a6.005 6.005 0 0 1 3.432 5.142.75.75 0 1 1-1.498.07 4.5 4.5 0 0 0-8.99 0 .75.75 0 0 1-1.498-.07 6.004 6.004 0 0 1 3.431-5.142 3.999 3.999 0 1 1 5.123 0ZM10.5 5a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z"></path>
+                </svg>
+            </td>
+            <td style="width:90%;padding: 10px;font-size: 16px">
+                Users
+
+            </td>
+        </tr>
+        <tr>
+            <td class="text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Zm-1.5 0a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z"></path>
+                    <path d="M12 1c.266 0 .532.009.797.028.763.055 1.345.617 1.512 1.304l.352 1.45c.019.078.09.171.225.221.247.089.49.19.728.302.13.061.246.044.315.002l1.275-.776c.603-.368 1.411-.353 1.99.147.402.349.78.726 1.128 1.129.501.578.515 1.386.147 1.99l-.776 1.274c-.042.069-.058.185.002.315.112.238.213.481.303.728.048.135.142.205.22.225l1.45.352c.687.167 1.249.749 1.303 1.512.038.531.038 1.063 0 1.594-.054.763-.616 1.345-1.303 1.512l-1.45.352c-.078.019-.171.09-.221.225-.089.248-.19.491-.302.728-.061.13-.044.246-.002.315l.776 1.275c.368.603.353 1.411-.147 1.99-.349.402-.726.78-1.129 1.128-.578.501-1.386.515-1.99.147l-1.274-.776c-.069-.042-.185-.058-.314.002a8.606 8.606 0 0 1-.729.303c-.135.048-.205.142-.225.22l-.352 1.45c-.167.687-.749 1.249-1.512 1.303-.531.038-1.063.038-1.594 0-.763-.054-1.345-.616-1.512-1.303l-.352-1.45c-.019-.078-.09-.171-.225-.221a8.138 8.138 0 0 1-.728-.302c-.13-.061-.246-.044-.315-.002l-1.275.776c-.603.368-1.411.353-1.99-.147-.402-.349-.78-.726-1.128-1.129-.501-.578-.515-1.386-.147-1.99l.776-1.274c.042-.069.058-.185-.002-.314a8.606 8.606 0 0 1-.303-.729c-.048-.135-.142-.205-.22-.225l-1.45-.352c-.687-.167-1.249-.749-1.304-1.512a11.158 11.158 0 0 1 0-1.594c.055-.763.617-1.345 1.304-1.512l1.45-.352c.078-.019.171-.09.221-.225.089-.248.19-.491.302-.728.061-.13.044-.246.002-.315l-.776-1.275c-.368-.603-.353-1.411.147-1.99.349-.402.726-.78 1.129-1.128.578-.501 1.386-.515 1.99-.147l1.274.776c.069.042.185.058.315-.002.238-.112.481-.213.728-.303.135-.048.205-.142.225-.22l.352-1.45c.167-.687.749-1.249 1.512-1.304C11.466 1.01 11.732 1 12 1Zm-.69 1.525c-.055.004-.135.05-.161.161l-.353 1.45a1.832 1.832 0 0 1-1.172 1.277 7.147 7.147 0 0 0-.6.249 1.833 1.833 0 0 1-1.734-.074l-1.274-.776c-.098-.06-.186-.036-.228 0a9.774 9.774 0 0 0-.976.976c-.036.042-.06.131 0 .228l.776 1.274c.314.529.342 1.18.074 1.734a7.147 7.147 0 0 0-.249.6 1.831 1.831 0 0 1-1.278 1.173l-1.45.351c-.11.027-.156.107-.16.162a9.63 9.63 0 0 0 0 1.38c.004.055.05.135.161.161l1.45.353a1.832 1.832 0 0 1 1.277 1.172c.074.204.157.404.249.6.268.553.24 1.204-.074 1.733l-.776 1.275c-.06.098-.036.186 0 .228.301.348.628.675.976.976.042.036.131.06.228 0l1.274-.776a1.83 1.83 0 0 1 1.734-.075c.196.093.396.176.6.25a1.831 1.831 0 0 1 1.173 1.278l.351 1.45c.027.11.107.156.162.16a9.63 9.63 0 0 0 1.38 0c.055-.004.135-.05.161-.161l.353-1.45a1.834 1.834 0 0 1 1.172-1.278 6.82 6.82 0 0 0 .6-.248 1.831 1.831 0 0 1 1.733.074l1.275.776c.098.06.186.036.228 0 .348-.301.675-.628.976-.976.036-.042.06-.131 0-.228l-.776-1.275a1.834 1.834 0 0 1-.075-1.733c.093-.196.176-.396.25-.6a1.831 1.831 0 0 1 1.278-1.173l1.45-.351c.11-.027.156-.107.16-.162a9.63 9.63 0 0 0 0-1.38c-.004-.055-.05-.135-.161-.161l-1.45-.353c-.626-.152-1.08-.625-1.278-1.172a6.576 6.576 0 0 0-.248-.6 1.833 1.833 0 0 1 .074-1.734l.776-1.274c.06-.098.036-.186 0-.228a9.774 9.774 0 0 0-.976-.976c-.042-.036-.131-.06-.228 0l-1.275.776a1.831 1.831 0 0 1-1.733.074 6.88 6.88 0 0 0-.6-.249 1.835 1.835 0 0 1-1.173-1.278l-.351-1.45c-.027-.11-.107-.156-.162-.16a9.63 9.63 0 0 0-1.38 0Z"></path>
+                </svg>
+            </td>
+            <td style="width:90%;padding: 10px;font-size: 16px">
+                Settings
+
+            </td>
+        </tr>
+    </table>
+</div>
