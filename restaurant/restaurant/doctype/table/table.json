@@ -1,0 +1,73 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:table_name",
+ "creation": "2023-09-04 23:28:01.645373",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "status",
+  "table_name",
+  "table_name_arabic",
+  "table_capacity",
+  "disabled"
+ ],
+ "fields": [
+  {
+   "fieldname": "table_name",
+   "fieldtype": "Data",
+   "label": "Table Name",
+   "unique": 1
+  },
+  {
+   "fieldname": "table_capacity",
+   "fieldtype": "Float",
+   "label": "Table Capacity"
+  },
+  {
+   "fieldname": "table_name_arabic",
+   "fieldtype": "Data",
+   "label": "Table Name Arabic"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Status",
+   "options": "Available\nOccupied"
+  },
+  {
+   "default": "0",
+   "fieldname": "disabled",
+   "fieldtype": "Check",
+   "label": "Disabled"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-09-07 11:39:28.093482",
+ "modified_by": "Administrator",
+ "module": "Restaurant",
+ "name": "Table",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
