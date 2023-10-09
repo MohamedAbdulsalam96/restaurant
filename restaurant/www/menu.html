@@ -262,6 +262,21 @@
           border: 1px solid #ccc;
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
+        #custom-alert2 {
+            flex-direction: row;
+          display: none;
+          position: fixed;
+          top: 94%;
+            font-weight: bold;
+          right: -10px;
+          transform: translate(-50%, -50%);
+          /*background-color: #00c853;*/
+          background-color: white;
+          padding: 0 5px 5px 10px;
+            width: 200px;
+          border: 1px solid #ccc;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
 
     </style>
 </head>
@@ -319,9 +334,10 @@
                 <!-- Cart items will be dynamically added here -->
             </ul>
             <p>Total: <span class="cart-item-total" id="cartTotalModal">$0.00</span></p>
-            <button class="checkout-btn" id="checkoutBtnModal">Checkout</button>
+            <button class="checkout-btn" id="checkoutBtnModal">Add Order</button>
         </div>
     </div>
+    <!--Add to Cart Message-->
     <div id="custom-alert" style="text-align: center">
          <svg xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 512 512" fill="#43c759">
              <!--<style>svg{fill:#43c759}</style>-->
@@ -333,6 +349,19 @@
         </svg>
 
     </div>
+     <!--Succesful Checkout Message-->
+    <div id="custom-alert2" style="text-align: center">
+         <svg xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 512 512" fill="#43c759">
+             <!--<style>svg{fill:#43c759}</style>-->
+            <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/>
+         </svg>
+
+            <svg width="160" height="50" xmlns="http://www.w3.org/2000/svg">
+          <text x="10" y="40" font-family="Arial" font-size="16" fill="#333" text-anchor="start">Order Created!</text>
+        </svg>
+
+    </div>
+    <!--No Items in the cart Message-->
     <div id="custom-alert1" style="text-align: center">
          <svg xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 512 512" fill="#ff432e">
              <!--<style>svg{fill:#ff432e}</style>-->
@@ -501,19 +530,6 @@
             const checkoutBtn = document.getElementById("checkoutBtn");
             const checkoutBtnModal = document.getElementById("checkoutBtnModal");
 
-//        checkoutBtn.addEventListener("click", () => {
-//            // In a real application, you would handle the payment processing here
-//            fetch("http://localhost:8002/api/method/restaurant.api.add_order", {
-//                method: "PUT",
-//                 headers: {
-//                  "Content-Type": "application/json",
-//                },
-//                body: JSON.stringify({data:menuItems})
-//            })
-////            alert("Payment successful! Your order has been placed.");
-////            cartContents = [];
-////            renderCart();
-//        });
 
         checkoutBtnModal.addEventListener("click", () => {
             // In a real application, you would handle the payment processing here
@@ -523,7 +539,10 @@
             table: table,
             items: cartContents
         }
-
+        console.log("apiUrl")
+        console.log(apiUrl)
+        console.log(cartContents)
+        console.log(table)
         fetch(apiUrl, {
             method: 'POST',
             headers: {
@@ -542,8 +561,15 @@
             return response.json(); // Parse the response body as JSON
         })
         .then(data => {
-            // Handle the response data here
-            console.log('Response Data:', data);
+            cartContents = [];
+            renderCart();
+            closeCartModal.click()
+             var customAlert = document.getElementById('custom-alert2');
+                    customAlert.style.display = 'block';
+                    setTimeout(() => {
+                        customAlert.style.display = 'none';
+                    },3000)
+
         })
         .catch(error => {
             // Handle any errors that occurred during the fetch
