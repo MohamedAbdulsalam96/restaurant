@@ -47,20 +47,21 @@
    "label": "Disabled"
   },
   {
-   "fieldname": "qrcode",
-   "fieldtype": "Attach",
-   "label": "QR Code"
-  },
-  {
    "fieldname": "qr_code_image",
    "fieldtype": "Image",
    "label": "QR Code Image",
    "options": "qrcode"
+  },
+  {
+   "fieldname": "qrcode",
+   "fieldtype": "Attach",
+   "hidden": 1,
+   "label": "Qr Code"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-26 21:48:46.744491",
+ "modified": "2023-10-09 11:05:20.960832",
  "modified_by": "Administrator",
  "module": "Restaurant",
  "name": "Table",
