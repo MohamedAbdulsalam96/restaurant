@@ -277,7 +277,36 @@
           border: 1px solid #ccc;
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
-
+        .modal1 {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* Places the modal above other elements */
+        }
+        /* Styles for the modal content */
+        .modal-content1 {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            text-align: center;
+        }
+        /* Button styles */
+        .modal-button1 {
+            margin: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -373,6 +402,9 @@
         </svg>
 
     </div>
+    <!--<div id="custom-dialog" class="modal1">-->
+
+    <!--</div>-->
     <script>
         const searchParams = new URLSearchParams(window.location.search);
         var table = searchParams.get("table")
@@ -385,6 +417,7 @@
                 .then(items => {
              menuItems = items.message
              const menuContainer = document.getElementById("menuContainer");
+             const container = document.getElementsByClassName("container");
             const cart = document.getElementById("cart");
             const cartItems = document.getElementById("cartItems");
             const cartTotal = document.getElementById("cartTotal");
@@ -398,6 +431,7 @@
 
             let cartContents = [];
             let currentCategory = "all";
+
 
         // Function to render the menu
             function renderMenu() {
@@ -431,7 +465,19 @@
                 }
             });
         }
-
+            var customDialog = document.createElement('div')
+            customDialog.classList.add("modal1");
+            customDialog.setAttribute("id","custom-dialog")
+            customDialog.innerHTML = `<div class="modal-content1">
+                <p>Are you sure you want to proceed?</p>
+                <button class="modal-button1 confirm" >Yes</button>
+                <button class="modal-button1 notconfirm">No</button>
+            </div>`
+            const confirmDeletion = customDialog.querySelector(".confirm");
+            confirmDeletion.addEventListener("click", confirmAction);
+             const notConfirmDeletion = customDialog.querySelector(".notconfirm");
+            notConfirmDeletion.addEventListener("click", closeConfirmationDialog);
+            container[0].append(customDialog)
         // Function to handle adding items to the cart
             function addToCart(event) {
             const button = event.target;
@@ -460,20 +506,34 @@
 
             }
         }
+         function closeConfirmationDialog() {
+            customDialog.style.display = 'none';
+        }
 
+        function confirmAction(event) {
+                var cartItemModal = document.getElementsByClassName(event.target.id)[0]
+            console.log(cartItemModal)
+            const index = cartContents.findIndex((cartItem) => cartItem.id === event.target.id);
+            cartContents.splice(index, 1);
+            cartItemsModal.removeChild(cartItemModal);
+            closeConfirmationDialog();
+            if(cartContents.length === 0){
+                closeCartModal.click()
+            }
+        }
         // Function to render the cart
             function renderCart() {
             cartItems.innerHTML = "";
             cartItemsModal.innerHTML = "";
             let total = 0;
-            console.log(cartContents)
             const cartItem1 = document.createElement("li");
                 cartItem1.classList.add("cart-item");
 
                 cartItem1.innerHTML = `
-                    <span class="cart-item-name" style="width:50%">Item</span>
+                    <span class="cart-item-name" style="width:25%">Item</span>
                     <span style="width:25%">Qty</span>
                     <span style="width:25%">Price</span>
+                    <span style="width:25%">Actions</span>
                 `;
 
                 cartItems.appendChild(cartItem1);
@@ -482,39 +542,60 @@
                 cartItemModal1.classList.add("cart-item");
 
                 cartItemModal1.innerHTML = `
-                    <span class="cart-item-name" style="width:50%">Item</span>
+                    <span class="cart-item-name" style="width:25%">Item</span>
                     <span style="width:25%">Qty</span>
                     <span style="width:25%">Price</span>
+                    <span style="width:25%">Actions</span>
                 `;
 
                 cartItemsModal.appendChild(cartItemModal1);
 
             cartContents.forEach((item, index) => {
-                const cartItem = document.createElement("li");
-                cartItem.classList.add("cart-item");
-
-                cartItem.innerHTML = `
-                    <span class="cart-item-name" style="width:50%">${item.item_name}</span>
-                    <span style="width:25%">${item.qty}</span>
-                    <span style="width:25%">$${item.price.toFixed(2)}</span>
-                `;
-
-                cartItems.appendChild(cartItem);
+//                const cartItem = document.createElement("li");
+//                cartItem.classList.add("cart-item");
+//
+//                cartItem.innerHTML = `
+//                    <span class="cart-item-name" style="width:25%">${item.item_name}</span>
+//                    <span style="width:25%">${item.qty}</span>
+//                    <span style="width:25%">$${item.price.toFixed(2)}</span>
+//                    <span style="width:25%"></span>
+//                `;
+//
+//                cartItems.appendChild(cartItem);
 
                 const cartItemModal = document.createElement("li");
                 cartItemModal.classList.add("cart-item");
-
+                cartItemModal.classList.add(item.id);
                 cartItemModal.innerHTML = `
-                    <span class="cart-item-name" style="width:50%">${item.item_name}</span>
+                    <span class="cart-item-name" style="width:25%">${item.item_name}</span>
                     <span style="width:25%">${item.qty}</span>
                     <span style="width:25%">$${item.price.toFixed(2)}</span>
-                `;
+                    <span style="width:25%">
 
+                      <svg class="remove-from-cart"  fill="#ff0000" width="30px" height="30px" viewBox="0 0 200 200" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" stroke="#ff0000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title></title><path d="M100,15a85,85,0,1,0,85,85A84.93,84.93,0,0,0,100,15Zm0,150a65,65,0,1,1,65-65A64.87,64.87,0,0,1,100,165Z"></path><path d="M128.5,74a9.67,9.67,0,0,0-14,0L100,88.5l-14-14a9.9,9.9,0,0,0-14,14l14,14-14,14a9.9,9.9,0,0,0,14,14l14-14,14,14a9.9,9.9,0,0,0,14-14l-14-14,14-14A10.77,10.77,0,0,0,128.5,74Z"></path></g></svg>
+                      </span>
+                `;
+                const removeButton = cartItemModal.querySelector('.remove-from-cart');
+                removeButton.addEventListener('click', (r) => {
+                    const customDialog = document.getElementById('custom-dialog');
+
+                    customDialog.style.display = 'flex';
+
+                    const confirmDialogId = document.getElementsByClassName("confirm")[0];
+                    console.log(confirmDialogId)
+                    confirmDialogId.id = item.id
+
+//                    const index = cartContents.findIndex((cartItem) => cartItem.id === r.id);
+//                    cartContents.splice(index, 1);
+//                    cartItemsModal.removeChild(cartItemModal);
+//                    if(cartContents.length === 0){
+//                        closeCartModal.click()
+//                    }
+                });
                 cartItemsModal.appendChild(cartItemModal);
 
                 total += item.price;
             });
-
             cartTotal.textContent = total.toFixed(2);
             cartTotalModal.textContent = total.toFixed(2);
 
