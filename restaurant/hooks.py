@@ -219,7 +219,7 @@ app_license = "MIT"
 
 fixtures = [
 	{
-		"doctype": "Property Setter",
+		"doctype": "Custom Field",
 		"filters": [
 			[
 				"name",
