@@ -12,6 +12,8 @@
   "table_name",
   "table_name_arabic",
   "table_capacity",
+  "qrcode",
+  "qr_code_image",
   "disabled"
  ],
  "fields": [
@@ -43,11 +45,22 @@
    "fieldname": "disabled",
    "fieldtype": "Check",
    "label": "Disabled"
+  },
+  {
+   "fieldname": "qrcode",
+   "fieldtype": "Attach",
+   "label": "QR Code"
+  },
+  {
+   "fieldname": "qr_code_image",
+   "fieldtype": "Image",
+   "label": "QR Code Image",
+   "options": "qrcode"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-07 11:39:28.093482",
+ "modified": "2023-09-26 21:48:46.744491",
  "modified_by": "Administrator",
  "module": "Restaurant",
  "name": "Table",

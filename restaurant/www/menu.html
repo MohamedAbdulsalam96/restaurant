@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu</title>
+    <style>
+        /* CSS styles go here */
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .menu {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 10px
+        }
+
+        .menu-item {
+            width: calc(20% - 20px);
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            background-color: #fff;
+            transition: transform 0.2s;
+        }
+
+        .menu-item img {
+            min-width: 100%;
+            height: auto;
+        }
+
+        .menu-item-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .menu-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .menu-item p {
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        .menu-item .price {
+            font-weight: bold;
+            color: #ff5733;
+        }
+
+        .add-to-cart-btn {
+            background-color: #2490EF;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .cart {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            max-height: 80%;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .cart h2 {
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .cart-items {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item-name {
+            flex-grow: 1;
+        }
+
+        .cart-item-total {
+            font-weight: bold;
+            color: #ff5733;
+        }
+
+        .checkout-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        .modal {
+
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            max-width: 800px;
+        }
+
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Responsive design */
+        @media screen and (max-width: 768px) {
+            .menu-item {
+                width: calc(50% - 20px);
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .menu-item {
+                width: 100%;
+            }
+        }
+
+
+        .filter-container {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .filter-button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .filter-button:hover {
+            background-color: #555;
+        }
+
+        .search-container {
+            text-align: left;
+            margin-top: 20px;
+        }
+        .table-container {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .search-input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 1200px;
+        }
+        .table-input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .floating-cart-btn {
+            background-color: #4CAF50;
+            color: black;
+            border: none;
+            border-radius: 50%;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            text-align: center;
+        }
+        /*TEEEEEEEEEEEEEEST*/
+        #custom-alert {
+            flex-direction: row;
+          display: none;
+          position: fixed;
+          top: 94%;
+            font-weight: bold;
+          right: -10px;
+          transform: translate(-50%, -50%);
+          /*background-color: #00c853;*/
+          background-color: white;
+          padding: 0 5px 5px 10px;
+            width: 200px;
+          border: 1px solid #ccc;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        #custom-alert1 {
+            flex-direction: row;
+          display: none;
+          position: fixed;
+          top: 94%;
+            font-weight: bold;
+          right: -10px;
+          transform: translate(-50%, -50%);
+          /*background-color: #00c853;*/
+          background-color: white;
+          padding: 0 5px 5px 10px;
+            width: 200px;
+          border: 1px solid #ccc;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Restaurant Menu</h1>
+        <div class="table-container">
+            <input type="text" class="table-input" placeholder="Table" id="table" readonly/>
+        </div>
+        <div class="filter-container">
+            <button class="filter-button" data-category="all">All</button>
+            <button class="filter-button" data-category="appetizers">Appetizers</button>
+            <button class="filter-button" data-category="main-courses">Main Courses</button>
+            <button class="filter-button" data-category="desserts">Desserts</button>
+            <button class="filter-button" data-category="drinks">Drinks</button>
+            <!-- Add more categories as needed -->
+        </div>
+
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search menu items" id="searchInput">
+        </div>
+
+        <div class="menu" id="menuContainer">
+            <!-- Menu items with "Add to Cart" buttons here -->
+            <!-- Example item:
+            <div class="menu-item" data-category="appetizers">
+                <img src="item-image.jpg" alt="Item Name">
+                <div class="menu-item-content">
+                    <h3>Item Name</h3>
+                    <p>Description of the item. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p class="price">$9.99</p>
+                    <button class="add-to-cart-btn" data-index="0">Add to Cart</button>
+                </div>
+            </div>
+            -->
+        </div>
+    </div>
+
+    <div class="floating-cart-btn" id="openCartBtn"><span style="margin-top: 30px">&#128722;</span></div>
+
+    <div class="cart" id="cart">
+        <h2>Your Cart</h2>
+        <ul class="cart-items" id="cartItems">
+            <!-- Cart items will be dynamically added here -->
+        </ul>
+        <p>Total: <span class="cart-item-total" id="cartTotal">$0.00</span></p>
+        <button class="checkout-btn" id="checkoutBtn">Checkout</button>
+    </div>
+
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeCartModal">&times;</span>
+            <h2>Your Cart</h2>
+            <ul class="cart-items" id="cartItemsModal">
+                <!-- Cart items will be dynamically added here -->
+            </ul>
+            <p>Total: <span class="cart-item-total" id="cartTotalModal">$0.00</span></p>
+            <button class="checkout-btn" id="checkoutBtnModal">Checkout</button>
+        </div>
+    </div>
+    <div id="custom-alert" style="text-align: center">
+         <svg xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 512 512" fill="#43c759">
+             <!--<style>svg{fill:#43c759}</style>-->
+            <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/>
+         </svg>
+
+            <svg width="160" height="50" xmlns="http://www.w3.org/2000/svg">
+          <text x="10" y="40" font-family="Arial" font-size="16" fill="#333" text-anchor="start">Item Added to Cart</text>
+        </svg>
+
+    </div>
+    <div id="custom-alert1" style="text-align: center">
+         <svg xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 512 512" fill="#ff432e">
+             <!--<style>svg{fill:#ff432e}</style>-->
+             <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/>
+         </svg>
+
+            <svg width="160" height="50" xmlns="http://www.w3.org/2000/svg">
+          <text x="10" y="40" font-family="Arial" font-size="16" fill="#333" text-anchor="start">No items in the Cart</text>
+        </svg>
+
+    </div>
+    <script>
+        const searchParams = new URLSearchParams(window.location.search);
+        var table = searchParams.get("table")
+        document.getElementById("table").value = table
+         var menuItems = []
+            fetch(window.origin + "/api/method/restaurant.api.get_items")
+                .then(response => {
+                    return response.json()
+                })
+                .then(items => {
+             menuItems = items.message
+             const menuContainer = document.getElementById("menuContainer");
+            const cart = document.getElementById("cart");
+            const cartItems = document.getElementById("cartItems");
+            const cartTotal = document.getElementById("cartTotal");
+            const cartModal = document.getElementById("cartModal");
+            const cartItemsModal = document.getElementById("cartItemsModal");
+            const cartTotalModal = document.getElementById("cartTotalModal");
+            const openCartBtn = document.getElementById("openCartBtn");
+            const closeCartModal = document.getElementById("closeCartModal");
+            const filterButtons = document.querySelectorAll(".filter-button");
+            const searchInput = document.getElementById("searchInput");
+
+            let cartContents = [];
+            let currentCategory = "all";
+
+        // Function to render the menu
+            function renderMenu() {
+            // Clear the existing menu
+            menuContainer.innerHTML = "";
+
+            // Filter and display menu items based on the selected category and search input
+            menuItems.forEach((item, index) => {
+                if (
+                    (currentCategory === "all" || currentCategory === item.category) &&
+                    (searchInput.value.trim() === "" || item.item_name.toLowerCase().includes(searchInput.value.trim().toLowerCase()))
+                ) {
+                    const menuItem = document.createElement("div");
+                    menuItem.classList.add("menu-item");
+                    console.log("INEDEEEE")
+                    console.log(index)
+                    menuItem.innerHTML = `
+                        <img src="/files/dog.jpeg" alt="${item.item_name}">
+                        <div class="menu-item-content">
+                            <h3>${item.item_name}</h3>
+                            <p>${item.description}</p>
+                            <p class="price">${item.price.toFixed(2)}</p>
+                            <button class="add-to-cart-btn" data-index="${index.toString()}">Add to Cart</button>
+                        </div>
+                    `;
+
+                    const addToCartButton = menuItem.querySelector(".add-to-cart-btn");
+                    addToCartButton.addEventListener("click", addToCart);
+
+                    menuContainer.appendChild(menuItem);
+                }
+            });
+        }
+
+        // Function to handle adding items to the cart
+            function addToCart(event) {
+            const button = event.target;
+            const index = button.getAttribute("data-index");
+            if (index !== null) {
+                const existingItem = cartContents.find((cartItem) => cartItem.id === menuItems[index].id);
+                if (existingItem) {
+                    existingItem.qty++;
+                    var customAlert1 = document.getElementById('custom-alert');
+                    customAlert1.style.display = 'block';
+                    setTimeout(() => {
+                        customAlert.style.display = 'none';
+                    },3000)
+                    renderCart();
+                } else {
+                    menuItems[index]['qty'] = 1
+                    const selectedItem = menuItems[index];
+                    cartContents.push(selectedItem);
+                    var customAlert = document.getElementById('custom-alert');
+                    customAlert.style.display = 'block';
+                    setTimeout(() => {
+                        customAlert.style.display = 'none';
+                    },3000)
+                    renderCart();
+                }
+
+            }
+        }
+
+        // Function to render the cart
+            function renderCart() {
+            cartItems.innerHTML = "";
+            cartItemsModal.innerHTML = "";
+            let total = 0;
+            console.log(cartContents)
+            const cartItem1 = document.createElement("li");
+                cartItem1.classList.add("cart-item");
+
+                cartItem1.innerHTML = `
+                    <span class="cart-item-name" style="width:50%">Item</span>
+                    <span style="width:25%">Qty</span>
+                    <span style="width:25%">Price</span>
+                `;
+
+                cartItems.appendChild(cartItem1);
+
+                const cartItemModal1 = document.createElement("li");
+                cartItemModal1.classList.add("cart-item");
+
+                cartItemModal1.innerHTML = `
+                    <span class="cart-item-name" style="width:50%">Item</span>
+                    <span style="width:25%">Qty</span>
+                    <span style="width:25%">Price</span>
+                `;
+
+                cartItemsModal.appendChild(cartItemModal1);
+
+            cartContents.forEach((item, index) => {
+                const cartItem = document.createElement("li");
+                cartItem.classList.add("cart-item");
+
+                cartItem.innerHTML = `
+                    <span class="cart-item-name" style="width:50%">${item.item_name}</span>
+                    <span style="width:25%">${item.qty}</span>
+                    <span style="width:25%">$${item.price.toFixed(2)}</span>
+                `;
+
+                cartItems.appendChild(cartItem);
+
+                const cartItemModal = document.createElement("li");
+                cartItemModal.classList.add("cart-item");
+
+                cartItemModal.innerHTML = `
+                    <span class="cart-item-name" style="width:50%">${item.item_name}</span>
+                    <span style="width:25%">${item.qty}</span>
+                    <span style="width:25%">$${item.price.toFixed(2)}</span>
+                `;
+
+                cartItemsModal.appendChild(cartItemModal);
+
+                total += item.price;
+            });
+
+            cartTotal.textContent = total.toFixed(2);
+            cartTotalModal.textContent = total.toFixed(2);
+
+            // Enable or disable checkout button based on cart contents
+            const checkoutBtn = document.getElementById("checkoutBtn");
+            const checkoutBtnModal = document.getElementById("checkoutBtnModal");
+
+            checkoutBtn.disabled = cartContents.length === 0;
+            checkoutBtnModal.disabled = cartContents.length === 0;
+        }
+
+        // Event listener for the checkout button
+            const checkoutBtn = document.getElementById("checkoutBtn");
+            const checkoutBtnModal = document.getElementById("checkoutBtnModal");
+
+//        checkoutBtn.addEventListener("click", () => {
+//            // In a real application, you would handle the payment processing here
+//            fetch("http://localhost:8002/api/method/restaurant.api.add_order", {
+//                method: "PUT",
+//                 headers: {
+//                  "Content-Type": "application/json",
+//                },
+//                body: JSON.stringify({data:menuItems})
+//            })
+////            alert("Payment successful! Your order has been placed.");
+////            cartContents = [];
+////            renderCart();
+//        });
+
+        checkoutBtnModal.addEventListener("click", () => {
+            // In a real application, you would handle the payment processing here
+        const apiUrl = window.origin + '/api/method/restaurant.api.add_order'; // Replace with your app's details
+
+        const requestData = {
+            table: table,
+            items: menuItems
+        }
+
+        fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+            body: JSON.stringify(requestData),
+            mode: 'no-cors',
+
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json(); // Parse the response body as JSON
+        })
+        .then(data => {
+            // Handle the response data here
+            console.log('Response Data:', data);
+        })
+        .catch(error => {
+            // Handle any errors that occurred during the fetch
+            console.error('Error:', error);
+        });
+
+//            alert("Payment successful! Your order has been placed.");
+//            cartContents = [];
+//            renderCart();
+//            closeCartModal.click(); // Close the modal
+        });
+
+        // Event listeners for category filtering
+        filterButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                currentCategory = button.getAttribute("data-category");
+                renderMenu();
+            });
+        });
+
+        // Event listener for search input
+        searchInput.addEventListener("input", () => {
+            renderMenu();
+        });
+
+        // Event listener for opening the cart modal
+        openCartBtn.addEventListener("click", () => {
+            if(cartContents.length > 0){
+                cartModal.style.display = "block";
+            } else {
+                 var customAlert = document.getElementById('custom-alert1');
+                    customAlert.style.display = 'block';
+                    setTimeout(() => {
+                        customAlert.style.display = 'none';
+                    },3000)
+
+            }
+        });
+
+        // Event listener for closing the cart modal
+        closeCartModal.addEventListener("click", () => {
+            cartModal.style.display = "none";
+        });
+
+        // Initialize the menu and cart
+        renderMenu();
+        renderCart();
+
+            })
+    </script>
+</body>
+</html>
