@@ -215,3 +215,20 @@ app_license = "MIT"
 # auth_hooks = [
 #	"restaurant.auth.validate"
 # ]
+
+
+fixtures = [
+	{
+		"doctype": "Property Setter",
+		"filters": [
+			[
+				"name",
+				"in",
+				[
+					"Item Group-show_in_menu",
+					"Item-item_category",
+				]
+			]
+		]
+	}
+]
