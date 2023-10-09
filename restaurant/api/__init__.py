@@ -40,7 +40,7 @@ def get_items():
     elif len(f_item_groups) > 1:
         condition += " and item_group in {0} ".format(tuple(f_item_groups))
 
-    items = frappe.db.sql(""" SELECT name as id, item_name,item_category as category FROM `tabItem` WHERE disabled=0 {0} """.format(condition),as_dict=1)
+    items = frappe.db.sql(""" SELECT name as id, item_name,item_category as category,image FROM `tabItem` WHERE disabled=0 {0} """.format(condition),as_dict=1)
     for x in items:
         x['price'] = get_rate(x.name)
         if not x.category:
