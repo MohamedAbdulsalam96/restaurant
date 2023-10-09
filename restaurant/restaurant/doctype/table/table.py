@@ -11,7 +11,7 @@ class Table(Document):
 			qr = qrcode.QRCode(version=5,
 							   box_size=5,
 							   border=5)
-			qr_value = frappe.utils.get_url() + "/menu?table=" + self.name
+			qr_value = frappe.utils.get_url() + "/menu?table=" + self.name.replace(" ","%20")
 			# qr_value = "http://192.168.1.13:8002/menu?table=" + self.name
 			qr.add_data(qr_value)  # Adding the data to be encoded to the QRCode object
 			qr.make(fit=True)  # Making the entire QR Code space utilized
