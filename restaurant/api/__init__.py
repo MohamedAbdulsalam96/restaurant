@@ -3,6 +3,7 @@ import frappe,json
 @frappe.whitelist(allow_guest=1)
 def add_order():
     data = json.loads(frappe.request.data)
+    print(data)
     print(data['items'])
     obj = {
         "doctype": "Orders",
@@ -12,9 +13,10 @@ def add_order():
         "mode_of_payment":"Cash",
     }
     for x in data['items']:
+        print(x)
         x['item'] = x.get("id")
         x['rate'] = x.get("price")
-        x['amount'] = x.get("price") *x.get("qty")
+        x['amount'] = x.get("price") * x.get("qty")
         x['status'] = "Preparing"
     obj['order_item'] = data['items']
     print(obj)
