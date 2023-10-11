@@ -3,73 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Confirmation Dialog</title>
+    <title>Restaurant Menu</title>
     <style>
-        /* CSS for the modal dialog */
+        /* CSS for styling the menu and cart */
         body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
-        /* Styles for the modal container */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-            z-index: 9999; /* Places the modal above other elements */
+        .menu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 10px;
         }
-        /* Styles for the modal content */
-        .modal-content {
-            background-color: white;
-            border-radius: 5px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            text-align: center;
-        }
-        /* Button styles */
-        .modal-button {
+        .menu-item {
+            width: 45%;
             margin: 10px;
-            padding: 10px 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            position: relative;
+        }
+        .menu-item img {
+            max-width: 100%;
+            height: auto;
+        }
+        .item-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .item-name {
+            font-weight: bold;
+        }
+        .item-price {
+            color: #007bff;
+        }
+        .add-to-cart-button {
             cursor: pointer;
             background-color: #007bff;
             color: white;
             border: none;
             border-radius: 5px;
+            padding: 5px 10px;
+            width: 100%;
+        }
+        /* CSS for the quantity popup modal */
+        .quantity-modal {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            text-align: center;
+            z-index: 1;
+            top: -110px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .quantity-input {
+            width: 40px;
+            text-align: center;
+        }
+        .quantity-control {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .quantity-arrows {
+            cursor: pointer;
+            font-size: 20px;
         }
     </style>
 </head>
 <body>
-    <button onclick="showConfirmationDialog()">Show Confirmation Dialog</button>
+    <h1 style="text-align: center;">Restaurant Menu</h1>
 
-    <!-- Modal Dialog -->
-    <div id="custom-dialog" class="modal">
-        <div class="modal-content">
-            <p>Are you sure you want to proceed?</p>
-            <button class="modal-button" onclick="confirmAction()">Yes</button>
-            <button class="modal-button" onclick="closeConfirmationDialog()">No</button>
+    <div class="menu">
+        <!-- Menu items -->
+        <div class="menu-item">
+            <img src="burger.jpg" alt="Burger">
+            <div class="item-info">
+                <span class="item-name">Burger</span>
+                <span class="item-price">$10.00</span>
+            </div>
+            <button class="add-to-cart-button" onclick="showQuantityModal('Burger', 10.00)">Add to Cart</button>
+            <div class="quantity-modal" id="burgerQuantity">
+                <label for="burgerQty">Quantity:</label>
+                <div class="quantity-control">
+                    <span class="quantity-arrows" onclick="decrementQuantity('burgerQty')">-</span>
+                    <input type="number" id="burgerQty" class="quantity-input" value="1" min="1">
+                    <span class="quantity-arrows" onclick="incrementQuantity('burgerQty')">+</span>
+                </div>
+                <button class="add-to-cart-button" onclick="addToCart('Burger', 10.00, 'burgerQty')">Add</button>
+            </div>
         </div>
+        <div class="menu-item">
+            <img src="pizza.jpg" alt="Pizza">
+            <div class="item-info">
+                <span class="item-name">Pizza</span>
+                <span class="item-price">$12.00</span>
+            </div>
+            <button class="add-to-cart-button" onclick="showQuantityModal('Pizza', 12.00)">Add to Cart</button>
+            <div class="quantity-modal" id="pizzaQuantity">
+                <label for="pizzaQty">Quantity:</label>
+                <div class="quantity-control">
+                    <span class="quantity-arrows" onclick="decrementQuantity('pizzaQty')">-</span>
+                    <input type="number" id="pizzaQty" class="quantity-input" value="1" min="1">
+                    <span class="quantity-arrows" onclick="incrementQuantity('pizzaQty')">+</span>
+                </div>
+                <button class="add-to-cart-button" onclick="addToCart('Pizza', 12.00, 'pizzaQty')">Add</button>
+            </div>
+        </div>
+        <!-- Add more menu items here -->
+    </div>
+
+    <h2 style="text-align: center;">Cart</h2>
+
+    <div id="cart" style="text-align: center;">
+        <!-- Cart items will be displayed here -->
     </div>
 
     <script>
-        // JavaScript functions for showing/hiding the modal dialog
-        const customDialog = document.getElementById('custom-dialog');
-
-        function showConfirmationDialog() {
-            customDialog.style.display = 'flex';
+        // JavaScript for showing the quantity popup modal
+        function showQuantityModal(itemName, itemPrice) {
+            const modal = document.getElementById(`${itemName.toLowerCase()}Quantity`);
+            modal.style.display = 'flex';
         }
 
-        function closeConfirmationDialog() {
-            customDialog.style.display = 'none';
+        // JavaScript for incrementing the quantity
+        function incrementQuantity(inputId) {
+            const quantityInput = document.getElementById(inputId);
+            quantityInput.value = parseInt(quantityInput.value) + 1;
         }
 
-        function confirmAction() {
-            // Put your action here (e.g., delete, submit, etc.)
-            alert('Action confirmed');
-            closeConfirmationDialog();
+        // JavaScript for decrementing the quantity
+        function decrementQuantity(inputId) {
+            const quantityInput = document.getElementById(inputId);
+            if (parseInt(quantityInput.value) > 1) {
+                quantityInput.value = parseInt(quantityInput.value) - 1;
+            }
+        }
+
+        // JavaScript for adding items to the cart
+        function addToCart(itemName, itemPrice, inputId) {
+            const quantityInput = document.getElementById(inputId);
+            const quantity = parseInt(quantityInput.value);
+
+            if (quantity > 0) {
+                const cartItem = document.createElement('div');
+                cartItem.textContent = `${itemName} (Quantity: ${quantity}) - $${(itemPrice * quantity).toFixed(2)}`;
+                document.getElementById('cart').appendChild(cartItem);
+
+                // Close the quantity modal
+                const modal = document.getElementById(`${itemName.toLowerCase()}Quantity`);
+                modal.style.display = 'none';
+
+                // Reset the quantity input
+                quantityInput.value = 1;
+            } else {
+                alert('Please enter a valid quantity.');
+            }
         }
     </script>
 </body>

@@ -307,6 +307,25 @@
             border: none;
             border-radius: 5px;
         }
+        .quantity-modal {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            text-align: center;
+            transform: translate(25%, 25%);
+        }
+         .quantity-input {
+            width: 40px;
+            text-align: center;
+        }
+         .quantity-arrows {
+            cursor: pointer;
+            font-size: 20px;
+        }
     </style>
 </head>
 <body>
@@ -406,6 +425,7 @@
 
     <!--</div>-->
     <script>
+        var current_qty_modal = ""
         const searchParams = new URLSearchParams(window.location.search);
         var table = searchParams.get("table")
         document.getElementById("table").value = table
@@ -451,15 +471,28 @@
                     menuItem.innerHTML = `
                         <img src="${item.image}" alt="${item.item_name}">
                         <div class="menu-item-content">
+
                             <h3>${item.item_name}</h3>
                             <p>${item.description}</p>
+                            <div class="quantity-modal ${item.id}" >
+                                <label for="pizzaQty">Quantity:</label>
+                                <input type="number" id="${item.id}qty" name="qty" class="quantity-input" min="1" value="1" max="1000">
+                                <button class="add-to-cart-button-after-qty" data-index="${index.toString()}" id="${item.id}">Add</button>
+                            </div>
                             <p class="price">${item.price.toFixed(2)}</p>
-                            <button class="add-to-cart-btn" data-index="${index.toString()}">Add to Cart</button>
+                            <button class="add-to-cart-btn" id="${item.id}">Add to Cart</button>
+
                         </div>
                     `;
 
                     const addToCartButton = menuItem.querySelector(".add-to-cart-btn");
                     addToCartButton.addEventListener("click", addToCart);
+
+                    const addToCartButtonAfterQty = menuItem.querySelector(".add-to-cart-button-after-qty");
+                    addToCartButtonAfterQty.addEventListener("click", addToCartAfterQty);
+
+                    const qtyInput = menuItem.querySelector(".quantity-input");
+                    qtyInput.addEventListener("click", qty_change);
 
                     menuContainer.appendChild(menuItem);
                 }
@@ -479,49 +512,124 @@
             notConfirmDeletion.addEventListener("click", closeConfirmationDialog);
             container[0].append(customDialog)
         // Function to handle adding items to the cart
-            function addToCart(event) {
-            const button = event.target;
-            const index = button.getAttribute("data-index");
-            if (index !== null) {
-                const existingItem = cartContents.find((cartItem) => cartItem.id === menuItems[index].id);
-                if (existingItem) {
-                    existingItem.qty++;
-                    var customAlert1 = document.getElementById('custom-alert');
-                    customAlert1.style.display = 'block';
-                    setTimeout(() => {
-                        customAlert.style.display = 'none';
-                    },3000)
-                    renderCart();
-                } else {
-                    menuItems[index]['qty'] = 1
-                    const selectedItem = menuItems[index];
-                    cartContents.push(selectedItem);
-                    var customAlert = document.getElementById('custom-alert');
-                    customAlert.style.display = 'block';
-                    setTimeout(() => {
-                        customAlert.style.display = 'none';
-                    },3000)
-                    renderCart();
-                }
+        function qty_change(event) {
+            console.log(event.target    )
+        }
+            function addToCartAfterQty(event) {
+                const button = event.target;
+                const index = button.getAttribute("data-index");
+                if (index !== null) {
+                    const existingItem = cartContents.find((cartItem) => cartItem.id === menuItems[index].id);
+                    if (existingItem) {
+                        existingItem.qty += parseInt(document.getElementById(menuItems[index].id.toString() + "qty").value);
+                        const current = document.getElementsByClassName(current_qty_modal)[0];
+                        current.style.display = 'none';
+                        document.getElementById(menuItems[index].id.toString() + "qty").value = 1
+                        existingItem.amount = existingItem.qty * existingItem.price
+                        var customAlert1 = document.getElementById('custom-alert');
+                        customAlert1.style.display = 'block';
+                        setTimeout(() => {
+                            customAlert.style.display = 'none';
+                        },3000)
+                        renderCart();
+                    } else {
+                        menuItems[index]['qty'] = parseInt(document.getElementById(menuItems[index].id.toString() + "qty").value);
+                        menuItems[index]['amount'] = menuItems[index].price * menuItems[index]['qty']
+                        const current = document.getElementsByClassName(current_qty_modal)[0];
+                        current.style.display = 'none';
+                        document.getElementById(menuItems[index].id.toString() + "qty").value = 1
+                        const selectedItem = menuItems[index];
+                        cartContents.push(selectedItem);
+                        var customAlert = document.getElementById('custom-alert');
+                        customAlert.style.display = 'block';
+                        setTimeout(() => {
+                            customAlert.style.display = 'none';
+                        },3000)
+                        renderCart();
+                    }
 
+                }
             }
+            function addToCart(event) {
+                if(current_qty_modal){
+                     const current = document.getElementsByClassName(current_qty_modal)[0];
+                    current.style.display = 'none';
+                }
+                const modal = document.getElementsByClassName(event.target.id)[0];
+                console.log(modal)
+                modal.style.display = 'block';
+                current_qty_modal = event.target.id
+//            const button = event.target;
+//            const index = button.getAttribute("data-index");
+//            if (index !== null) {
+//                const existingItem = cartContents.find((cartItem) => cartItem.id === menuItems[index].id);
+//                if (existingItem) {
+//                    existingItem.qty++;
+//                    var customAlert1 = document.getElementById('custom-alert');
+//                    customAlert1.style.display = 'block';
+//                    setTimeout(() => {
+//                        customAlert.style.display = 'none';
+//                    },3000)
+//                    renderCart();
+//                } else {
+//                    menuItems[index]['qty'] = 1
+//                    const selectedItem = menuItems[index];
+//                    cartContents.push(selectedItem);
+//                    var customAlert = document.getElementById('custom-alert');
+//                    customAlert.style.display = 'block';
+//                    setTimeout(() => {
+//                        customAlert.style.display = 'none';
+//                    },3000)
+//                    renderCart();
+//                }
+//
+//            }
         }
          function closeConfirmationDialog() {
             customDialog.style.display = 'none';
         }
 
         function confirmAction(event) {
-                var cartItemModal = document.getElementsByClassName(event.target.id)[0]
-            console.log(cartItemModal)
-            const index = cartContents.findIndex((cartItem) => cartItem.id === event.target.id);
-            cartContents.splice(index, 1);
-            cartItemsModal.removeChild(cartItemModal);
-            closeConfirmationDialog();
-            if(cartContents.length === 0){
-                closeCartModal.click()
-            }
+                var cartItemModal = document.getElementsByClassName(event.target.id)[1]
+                const index = cartContents.findIndex((cartItem) => cartItem.id === event.target.id);
+                cartContents.splice(index, 1);
+                cartItemsModal.removeChild(cartItemModal);
+                closeConfirmationDialog();
+                if(cartContents.length === 0){
+                    closeCartModal.click()
+                }
         }
         // Function to render the cart
+         function incrementQuantity(event) {
+             var eventId = event.target.id
+             var inputId = eventId.split("_")[0]
+             console.log(event.target)
+             console.log(inputId)
+            var index = cartContents.find((cartItem) => cartItem.id === inputId);
+             console.log(index)
+             index.qty += 1
+             index.amount = index.price * index.qty
+//            const quantityInput = document.getElementById(inputId);
+//            quantityInput.value = parseInt(quantityInput.value) + 1;
+            renderCart()
+        }
+
+        // JavaScript for decrementing the quantity
+        function decrementQuantity(event) {
+              var eventId = event.target.id
+             var inputId = eventId.split("_")[0]
+            var index = cartContents.find((cartItem) => cartItem.id === inputId);
+            index.qty -= 1
+            index.amount = index.price * index.qty
+            if(index.qty === 0){
+                index.qty += 1
+                const customDialog = document.getElementById('custom-dialog');
+                customDialog.style.display = 'flex';
+                const confirmDialogId = document.getElementsByClassName("confirm")[0];
+                confirmDialogId.id = index.id
+            }
+             renderCart()
+        }
             function renderCart() {
             cartItems.innerHTML = "";
             cartItemsModal.innerHTML = "";
@@ -530,10 +638,11 @@
                 cartItem1.classList.add("cart-item");
 
                 cartItem1.innerHTML = `
-                    <span class="cart-item-name" style="width:25%">Item</span>
-                    <span style="width:25%">Qty</span>
-                    <span style="width:25%">Price</span>
-                    <span style="width:25%">Actions</span>
+                    <span class="cart-item-name" style="width:20%">Item</span>
+                    <span style="width:20%">Qty</span>
+                    <span style="width:20%">Price</span>
+                    <span style="width:20%">Amount</span>
+                    <span style="width:20%">Actions</span>
                 `;
 
                 cartItems.appendChild(cartItem1);
@@ -542,45 +651,61 @@
                 cartItemModal1.classList.add("cart-item");
 
                 cartItemModal1.innerHTML = `
-                    <span class="cart-item-name" style="width:25%">Item</span>
-                    <span style="width:25%">Qty</span>
-                    <span style="width:25%">Price</span>
-                    <span style="width:25%">Actions</span>
+                    <span class="cart-item-name" style="width:20%">Item</span>
+                    <span style="width:20%">Qty</span>
+                    <span style="width:20%">Price</span>
+                    <span style="width:20%">Amount</span>
+                    <span style="width:20%">Actions</span>
                 `;
 
                 cartItemsModal.appendChild(cartItemModal1);
 
             cartContents.forEach((item, index) => {
-//                const cartItem = document.createElement("li");
-//                cartItem.classList.add("cart-item");
-//
-//                cartItem.innerHTML = `
-//                    <span class="cart-item-name" style="width:25%">${item.item_name}</span>
-//                    <span style="width:25%">${item.qty}</span>
-//                    <span style="width:25%">$${item.price.toFixed(2)}</span>
-//                    <span style="width:25%"></span>
-//                `;
-//
-//                cartItems.appendChild(cartItem);
-
                 const cartItemModal = document.createElement("li");
                 cartItemModal.classList.add("cart-item");
                 cartItemModal.classList.add(item.id);
                 cartItemModal.innerHTML = `
-                    <span class="cart-item-name" style="width:25%">${item.item_name}</span>
-                    <span style="width:25%">${item.qty}</span>
-                    <span style="width:25%">$${item.price.toFixed(2)}</span>
-                    <span style="width:25%">
+                    <span class="cart-item-name" style="width:20%">${item.item_name}</span>
+
+                    <span style="width:20%">
+                    <span style="margin-right:4%" class="quantity-arrows decrement">
+
+                        <svg  id="${item.id}_increment" width="20px" height="20px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#a80000">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier"> <title>minus-circle</title><desc>Created with Sketch Beta.</desc> <defs> </defs>
+                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"> <g id="Icon-Set-Filled" sketch:type="MSLayerGroup" transform="translate(-518.000000, -1089.000000)" fill="#a80000"><path id="${item.id}_increment"  d="M540,1106 L528,1106 C527.447,1106 527,1105.55 527,1105 C527,1104.45 527.447,1104 528,1104 L540,1104 C540.553,1104 541,1104.45 541,1105 C541,1105.55 540.553,1106 540,1106 L540,1106 Z M534,1089 C525.163,1089 518,1096.16 518,1105 C518,1113.84 525.163,1121 534,1121 C542.837,1121 550,1113.84 550,1105 C550,1096.16 542.837,1089 534,1089 L534,1089 Z" sketch:type="MSShapeGroup"> </path> </g> </g> </g></svg>
+                    </span>
+                        ${item.qty}
+                    <span  style="margin-left:4%"  class="quantity-arrows increment"  >
+                       <svg  id="${item.id}_increment" width="20px" height="20px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#11ff00" stroke="#11ff00">
+                       <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                       <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                       <g id="SVGRepo_iconCarrier"> <title>plus-circle</title>
+                       <desc>Created with Sketch Beta.</desc> <defs> </defs>
+                       <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+                       <g id="Icon-Set-Filled" sketch:type="MSLayerGroup" transform="translate(-466.000000, -1089.000000)" fill="#098a00">
+                       <path  id="${item.id}_decrement" d="M488,1106 L483,1106 L483,1111 C483,1111.55 482.553,1112 482,1112 C481.447,1112 481,1111.55 481,1111 L481,1106 L476,1106 C475.447,1106 475,1105.55 475,1105 C475,1104.45 475.447,1104 476,1104 L481,1104 L481,1099 C481,1098.45 481.447,1098 482,1098 C482.553,1098 483,1098.45 483,1099 L483,1104 L488,1104 C488.553,1104 489,1104.45 489,1105 C489,1105.55 488.553,1106 488,1106 L488,1106 Z M482,1089 C473.163,1089 466,1096.16 466,1105 C466,1113.84 473.163,1121 482,1121 C490.837,1121 498,1113.84 498,1105 C498,1096.16 490.837,1089 482,1089 L482,1089 Z" sketch:type="MSShapeGroup"> </path> </g> </g> </g></svg>
+                   </span>
+                    </span>
+
+                    <span style="width:20%">${item.price.toFixed(2)}</span>
+                    <span style="width:20%">${item.amount.toFixed(2)}</span>
+                    <span style="width:20%">
 
                       <svg class="remove-from-cart"  fill="#ff0000" width="30px" height="30px" viewBox="0 0 200 200" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" stroke="#ff0000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title></title><path d="M100,15a85,85,0,1,0,85,85A84.93,84.93,0,0,0,100,15Zm0,150a65,65,0,1,1,65-65A64.87,64.87,0,0,1,100,165Z"></path><path d="M128.5,74a9.67,9.67,0,0,0-14,0L100,88.5l-14-14a9.9,9.9,0,0,0-14,14l14,14-14,14a9.9,9.9,0,0,0,14,14l14-14,14,14a9.9,9.9,0,0,0,14-14l-14-14,14-14A10.77,10.77,0,0,0,128.5,74Z"></path></g></svg>
                       </span>
                 `;
+                const increment = cartItemModal.querySelector(".increment");
+                console.log(increment)
+                increment.addEventListener("click", incrementQuantity);
+                const decrement = cartItemModal.querySelector(".decrement");
+                decrement.addEventListener("click", decrementQuantity);
+
                 const removeButton = cartItemModal.querySelector('.remove-from-cart');
                 removeButton.addEventListener('click', (r) => {
                     const customDialog = document.getElementById('custom-dialog');
-
                     customDialog.style.display = 'flex';
-
                     const confirmDialogId = document.getElementsByClassName("confirm")[0];
                     console.log(confirmDialogId)
                     confirmDialogId.id = item.id
@@ -594,7 +719,7 @@
                 });
                 cartItemsModal.appendChild(cartItemModal);
 
-                total += item.price;
+                total += item.amount;
             });
             cartTotal.textContent = total.toFixed(2);
             cartTotalModal.textContent = total.toFixed(2);
@@ -620,22 +745,24 @@
             table: table,
             items: cartContents
         }
-        console.log("apiUrl")
-        console.log(apiUrl)
-        console.log(cartContents)
-        console.log(table)
-        fetch(apiUrl, {
+        var request_obj = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                'Access-Control-Allow-Origin': '*'
+                'Access-Control-Allow-Origin': '*',
+
+
             },
             body: JSON.stringify(requestData),
             mode: 'no-cors',
+            cache: "reload"
 
-        })
+        }
+        console.log(request_obj)
+        fetch(apiUrl, request_obj)
         .then(response => {
+            console.log(response)
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }

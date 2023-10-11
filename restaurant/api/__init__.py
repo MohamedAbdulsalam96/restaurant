@@ -2,10 +2,9 @@ import frappe,json
 
 @frappe.whitelist(allow_guest=1)
 def add_order():
+    print("HEEEEEERE")
     try:
         data = json.loads(frappe.request.data)
-        print(data)
-        print(data['items'])
         obj = {
             "doctype": "Orders",
             "table":data['table'],
@@ -20,7 +19,6 @@ def add_order():
             x['amount'] = x.get("price") * x.get("qty")
             x['status'] = "Preparing"
         obj['order_item'] = data['items']
-        print(obj)
         frappe.get_doc(obj).insert(ignore_permissions=1)
         frappe.db.sql(""" UPDATE `tabTable` SET status='Occupied' WHERE name=%s """, data['table'])
         frappe.db.commit()
@@ -44,20 +42,23 @@ def get_items():
     elif len(f_item_groups) > 1:
         condition += " and item_group in {0} ".format(tuple(f_item_groups))
 
-    items = frappe.db.sql(""" SELECT name as id, item_name,item_category as category,image FROM `tabItem` WHERE disabled=0 {0} """.format(condition),as_dict=1)
+    items = frappe.db.sql(""" SELECT name as id, item_name,item_category as category,image, description FROM `tabItem` WHERE disabled=0 {0} """.format(condition),as_dict=1)
     for x in items:
-        x['price'] = get_rate(x.name)
+        x['price'] = get_rate(x.id)
         if not x.category:
             x.category = ""
+    print("ITEEEMS")
+    print(items)
     return items
 @frappe.whitelist()
 def get_rate(item_code):
 
     condition = " and selling = 1 and price_list='{0}'".format('Standard Selling')
 
-    query = """ SELECT * FROM `tabItem Price` WHERE item_code=%s {0} ORDER BY valid_from DESC LIMIT 1""".format(
-        condition)
-
-    item_price = frappe.db.sql(query, item_code, as_dict=1)
+    query = """ SELECT * FROM `tabItem Price` WHERE item_code='{0}' {1} ORDER BY valid_from DESC LIMIT 1""".format(
+        item_code,condition)
+    print(query)
+    item_price = frappe.db.sql(query, as_dict=1)
+    print(item_price)
     rate = item_price[0].price_list_rate if len(item_price) > 0 else 0
     return rate
