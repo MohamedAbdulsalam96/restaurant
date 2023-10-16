@@ -7,8 +7,9 @@ def get_orders():
 
     for x in orders:
         print(x)
-        x['table'] = '<table style="width: 100%;margin-top: 10px;border-bottom: 1px solid lightgray;margin-right: 10px" onclick="select_order({0})">'.format("'" + x.name + "'") + \
-                     '<td style="width: 2%;border: 1px solid black;background-color: #00b0ff"></td>' \
+        color = "red" if x.status == 'Void' else "green" if x.status == 'Paid' else "orange"
+        x['table'] = '<table class="order" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);width: 100%;margin-top: 10px;border-bottom: 1px solid lightgray;margin-right: 10px;cursor: pointer" onclick="select_order({0})">'.format("'" + x.name + "'") + \
+                     '<td style="width: 2%;border: 1px solid black;background-color: {0}"></td>'.format(color) + \
                        '<td style="width: 40%;padding-left: 10px">#' + x.name.split("-")[1] + '<br>' + str(
             x.total_amount) + '<br>TABLE: ' + x.table + ' </td>' \
                                                         '<td style="width: 58%">' + str(x.posting_date) + " " + str(
@@ -73,10 +74,16 @@ def get_selected_order(order_name,e_orders,from_get_orders=False):
                       ' <th bgcolor="#d3d3d3" class="text-left" style="padding: 15px;width:20%">Amount</th>' \
                       '</tr>' + items_table + \
                       '<th bgcolor="#d3d3d3" class="text-left" style="padding: 15px" colspan="5">Total</th>' \
-                      '<th bgcolor="#d3d3d3" class="text-left" style="padding: 15px">' + str(total_amount) + '</th>' \
-                                  ' </tr>' \
-                                  '</table>'
+                      '<th bgcolor="#d3d3d3" class="text-left" style="padding: 15px">' + str(total_amount) + '</th></tr>'
 
+    if orders.status == "Unpaid":
+        selected_order += ' <tr> <td colspan="6" style="width: 100%">' \
+                                        '<div style=" display: flex;">' \
+                                             '<button class="custom-button" style="background-color: red;font-weight: bold" onclick="void_order({0})">Void Order</button> '.format("'" + orders.name + "'")  + \
+                                             '<button class="custom-button" style="background-color: green;font-weight: bold" onclick="paid_order({0})">Paid</button>'.format("'" + orders.name + "'")  + \
+                                         '</div>' \
+                                         '</td></tr>'
+    selected_order += '</table>'
     return selected_order if from_get_orders else {
         "orders": json.loads(e_orders),
         "selected_order":selected_order,
@@ -87,6 +94,7 @@ def get_selected_order(order_name,e_orders,from_get_orders=False):
 def create_order(values):
     data = json.loads(values)
     data['doctype'] = 'Orders'
+    data['status'] = 'Unpaid'
     data['posting_date'] = frappe.utils.now_datetime().date()
     data['posting_time'] = frappe.utils.now_datetime().time()
     for x in data['order_item']:
@@ -96,3 +104,21 @@ def create_order(values):
     frappe.db.sql(""" UPDATE `tabTable` SET status='Occupied' WHERE name=%s """,data['table'])
     frappe.db.commit()
     return get_orders()
+
+
+@frappe.whitelist()
+def void_order(order_name):
+    order = frappe.get_doc("Orders",order_name)
+    order.status = 'Void'
+    order.save()
+    change_table_status(order.table)
+
+@frappe.whitelist()
+def paid_order(order_name):
+    order = frappe.get_doc("Orders",order_name)
+    order.status = 'Paid'
+    order.save()
+    change_table_status(order.table)
+def change_table_status(table):
+    frappe.db.sql(""" UPDATE `tabTable` SET status='Available' WHERE name=%s """,table)
+    frappe.db.commit()

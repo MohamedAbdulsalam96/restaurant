@@ -34,8 +34,12 @@ frappe.pages['restaurant'].on_page_load = function (wrapper) {
     })
     let $btn = page.set_primary_action('Create Order', () => create_order()
     )
+    page.set_secondary_action('Refresh', () => fetch_data())
 
+    fetch_data()
+}
 
+function fetch_data() {
     frappe.call({
         method: "restaurant.restaurant.page.restaurant.restaurant.get_orders",
         args: {},
@@ -43,18 +47,24 @@ frappe.pages['restaurant'].on_page_load = function (wrapper) {
         freeze_message: "Fetching Orders...",
         async: false,
         callback: function (resp) {
-            // if (page.main[0].children.length > 1) {
-            //     page.main[0].replaceChild(document.createTextNode(""), page.main[0].children[1])
-            //     page.main.append(frappe.render_template("employee_iou_&_loans", {'doc': resp.message}))
-            //
-            // } else {
-            //     page.main.append(frappe.render_template("employee_iou_&_loans", {'doc': resp.message}))
-            //
-            // }
             orders = resp.message.orders
             resp.message['url'] =  "https://adminstaging.cocodine.me"
-            page.sidebar.append(frappe.render_template("test", {'doc': resp.message}))
-            page.main.append(frappe.render_template("main", {'doc': resp.message}))
+          if(page.sidebar[0].children.length > 0){
+				cur_page.page.page.sidebar[0].replaceChild(document.createTextNode(""),cur_page.page.page.sidebar[0].children[0])
+                page.sidebar.append(frappe.render_template("test", {'doc': resp.message}))
+			} else {
+                page.sidebar.append(frappe.render_template("test", {'doc': resp.message}))
+
+			}
+
+            if(page.main[0].children.length > 1){
+				cur_page.page.page.main[0].replaceChild(document.createTextNode(""),cur_page.page.page.main[0].children[cur_page.page.page.main[0].children.length - 1])
+                page.main.append(frappe.render_template("main", {'doc': resp.message}))
+			} else {
+                page.main.append(frappe.render_template("main", {'doc': resp.message}))
+
+			}
+
         }
     });
     document.getElementById("navbar-search").style.display = "none"
@@ -75,18 +85,25 @@ function select_order(order) {
         freeze_message: "Fetching Orders...",
         async: false,
         callback: function (resp) {
+
             orders = resp.message.orders
             resp.message['url'] =  "https://adminstaging.cocodine.me"
             if (page.main[0].children.length > 1) {
-                page.main[0].replaceChild(document.createTextNode(""), page.main[0].children[1])
+
+                console.log(page.main[0].children)
+                cur_page.page.page.main[0].replaceChild(document.createTextNode(""),cur_page.page.page.main[0].children[cur_page.page.page.main[0].children.length - 1])
                 page.sidebar[0].replaceChild(document.createTextNode(""), page.sidebar[0].children[0])
-                page.sidebar.append(frappe.render_template("test", {'doc': resp.message}))
-                page.main.append(frappe.render_template("main", {'doc': resp.message}))
-            } else {
 
                 page.sidebar.append(frappe.render_template("test", {'doc': resp.message}))
                 page.main.append(frappe.render_template("main", {'doc': resp.message}))
+
+            } else {
+
+                page.sidebar.append(frappe.render_template("test", {'doc': resp.message}))
+                cur_page.page.page.main[0].replaceChild(document.createTextNode(""),cur_page.page.page.main[0].children[cur_page.page.page.main[0].children.length - 1])
+
             }
+
 
         }
     });
@@ -156,16 +173,7 @@ function create_order() {
                 callback: function (resp) {
                     orders = resp.message.orders
                     resp.message['url'] =  "https://adminstaging.cocodine.me"
-                    if (page.main[0].children.length > 1) {
-                        page.main[0].replaceChild(document.createTextNode(""), page.main[0].children[1])
-                        page.sidebar[0].replaceChild(document.createTextNode(""), page.sidebar[0].children[0])
-                        page.sidebar.append(frappe.render_template("test", {'doc':  resp.message}))
-                        page.main.append(frappe.render_template("main", {'doc': resp.message}))
-                    } else {
-
-                        page.sidebar.append(frappe.render_template("test", {'doc':  resp.message}))
-                        page.main.append(frappe.render_template("main", {'doc': resp.message}))
-                    }
+                    fetch_data()
                     d.hide()
 
                 }
@@ -183,4 +191,41 @@ function create_order() {
 function change_tab(tab) {
     console.log("============")
     console.log(tab)
+}
+
+function void_order(name) {
+    frappe.confirm('Are you sure you want to proceed?',
+    () => {
+        frappe.call({
+            method: "restaurant.restaurant.page.restaurant.restaurant.void_order",
+            args: {
+                order_name: name,
+            },
+            freeze: true,
+        freeze_message:"Voiding order.....",
+        callback: function () {
+             fetch_data()
+        }
+        })
+    }, () => {
+        // action to perform if No is selected
+    })
+}
+function paid_order(name) {
+    frappe.confirm('Are you sure you want to proceed?',
+    () => {
+        frappe.call({
+            method: "restaurant.restaurant.page.restaurant.restaurant.paid_order",
+            args: {
+                order_name: name,
+            },
+            freeze: true,
+        freeze_message:"Paid order.....",
+        callback: function () {
+             fetch_data()
+        }
+        })
+    }, () => {
+        // action to perform if No is selected
+    })
 }

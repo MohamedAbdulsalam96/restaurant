@@ -1,6 +1,33 @@
+<html>
+<style>
+     .custom-button {
+            background-color: #3498db; /* Background color */
+            border: none; /* Remove button border */
+            color: #ffffff; /* Text color */
+            padding: 10px 20px; /* Padding inside the button */
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 2px;
+            cursor: pointer;
+            border-radius: 5px; /* Rounded corners */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add a shadow */
+            width: 100%
+        }
 
+        /* Hover effect */
+        .custom-button:hover {
+            background-color: #2980b9; /* Change the background color on hover */
+        }
+        .order:hover {
+            background-color: #FCFFBF; /* Change the background color on hover */
+        }
+</style>
 <div style="width: 100%;caret-color: transparent;" class="page-form">
     <table style="width: 100%">
+
+        <tr>
         <td style="width: 25%">
             <div style="margin-left: 10px;overflow-y: scroll;height: 700px">
                 {%for x in doc.orders%}
@@ -17,9 +44,10 @@
                 </div>
             </div>
         </td>
+        </tr>
     </table>
 </div>
-
+</html>
 <!--<div  class="row">-->
     <!--<div  class="col-sm-6 col-md-4 col-xl-4 col-12 pa-3 mt-3">-->
        <!--<div style="width: 100%;border: 1px solid black" class="rounded-sm">-->

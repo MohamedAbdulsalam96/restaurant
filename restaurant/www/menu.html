@@ -474,13 +474,13 @@
 
                             <h3>${item.item_name}</h3>
                             <p>${item.description}</p>
-                            <div class="quantity-modal ${item.id}" >
+                            <div class="quantity-modal ${item.id.replace(" ","-")}" >
                                 <label for="pizzaQty">Quantity:</label>
-                                <input type="number" id="${item.id}qty" name="qty" class="quantity-input" min="1" value="1" max="1000">
-                                <button class="add-to-cart-button-after-qty" data-index="${index.toString()}" id="${item.id}">Add</button>
+                                <input type="number" id="${item.id.replace(" ","-")}qty" name="qty" class="quantity-input" min="1" value="1" max="1000">
+                                <button class="add-to-cart-button-after-qty" data-index="${index.toString()}" id="${item.id.replace(" ","-")}">Add</button>
                             </div>
                             <p class="price">${item.price.toFixed(2)}</p>
-                            <button class="add-to-cart-btn" id="${item.id}">Add to Cart</button>
+                            <button class="add-to-cart-btn" id="${item.id.replace(" ","-")}">Add to Cart</button>
 
                         </div>
                     `;
@@ -521,10 +521,10 @@
                 if (index !== null) {
                     const existingItem = cartContents.find((cartItem) => cartItem.id === menuItems[index].id);
                     if (existingItem) {
-                        existingItem.qty += parseInt(document.getElementById(menuItems[index].id.toString() + "qty").value);
+                        existingItem.qty += parseInt(document.getElementById((menuItems[index].id.toString()).replace(" ","-") + "qty").value);
                         const current = document.getElementsByClassName(current_qty_modal)[0];
                         current.style.display = 'none';
-                        document.getElementById(menuItems[index].id.toString() + "qty").value = 1
+                        document.getElementById((menuItems[index].id.toString()).replace(" ","-") + "qty").value = 1
                         existingItem.amount = existingItem.qty * existingItem.price
                         var customAlert1 = document.getElementById('custom-alert');
                         customAlert1.style.display = 'block';
@@ -533,11 +533,11 @@
                         },3000)
                         renderCart();
                     } else {
-                        menuItems[index]['qty'] = parseInt(document.getElementById(menuItems[index].id.toString() + "qty").value);
+                        menuItems[index]['qty'] = parseInt(document.getElementById((menuItems[index].id.toString()).replace(" ","-") + "qty").value);
                         menuItems[index]['amount'] = menuItems[index].price * menuItems[index]['qty']
                         const current = document.getElementsByClassName(current_qty_modal)[0];
                         current.style.display = 'none';
-                        document.getElementById(menuItems[index].id.toString() + "qty").value = 1
+                        document.getElementById((menuItems[index].id.toString()).replace(" ","-") + "qty").value = 1
                         const selectedItem = menuItems[index];
                         cartContents.push(selectedItem);
                         var customAlert = document.getElementById('custom-alert');
@@ -590,8 +590,8 @@
         }
 
         function confirmAction(event) {
-                var cartItemModal = document.getElementsByClassName(event.target.id)[1]
-                const index = cartContents.findIndex((cartItem) => cartItem.id === event.target.id);
+                var cartItemModal = document.getElementsByClassName(event.target.id.replace(" ","-"))[1]
+                const index = cartContents.findIndex((cartItem) => cartItem.id === event.target.id.replace(" ","-"));
                 cartContents.splice(index, 1);
                 cartItemsModal.removeChild(cartItemModal);
                 closeConfirmationDialog();
@@ -604,8 +604,9 @@
              var eventId = event.target.id
              var inputId = eventId.split("_")[0]
              console.log(event.target)
-             console.log(inputId)
-            var index = cartContents.find((cartItem) => cartItem.id === inputId);
+             console.log(eventId)
+             console.log(inputId.replace("-"," "))
+            var index = cartContents.find((cartItem) => cartItem.id === inputId.replace("-"," "));
              console.log(index)
              index.qty += 1
              index.amount = index.price * index.qty
@@ -618,7 +619,7 @@
         function decrementQuantity(event) {
               var eventId = event.target.id
              var inputId = eventId.split("_")[0]
-            var index = cartContents.find((cartItem) => cartItem.id === inputId);
+            var index = cartContents.find((cartItem) => cartItem.id === inputId.replace("-"," "));
             index.qty -= 1
             index.amount = index.price * index.qty
             if(index.qty === 0){
@@ -663,14 +664,14 @@
             cartContents.forEach((item, index) => {
                 const cartItemModal = document.createElement("li");
                 cartItemModal.classList.add("cart-item");
-                cartItemModal.classList.add(item.id);
+                cartItemModal.classList.add(item.id.replace(" ","-"));
                 cartItemModal.innerHTML = `
                     <span class="cart-item-name" style="width:20%">${item.item_name}</span>
 
                     <span style="width:20%">
                     <span style="margin-right:4%" class="quantity-arrows decrement">
 
-                        <svg  id="${item.id}_increment" width="20px" height="20px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#a80000">
+                        <svg  id="${item.id.replace(" ","-")}_increment" width="20px" height="20px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#a80000">
                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                         <g id="SVGRepo_iconCarrier"> <title>minus-circle</title><desc>Created with Sketch Beta.</desc> <defs> </defs>
@@ -678,14 +679,14 @@
                     </span>
                         ${item.qty}
                     <span  style="margin-left:4%"  class="quantity-arrows increment"  >
-                       <svg  id="${item.id}_increment" width="20px" height="20px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#11ff00" stroke="#11ff00">
+                       <svg  id="${item.id.replace(" ","-")}_increment" width="20px" height="20px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#11ff00" stroke="#11ff00">
                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                        <g id="SVGRepo_iconCarrier"> <title>plus-circle</title>
                        <desc>Created with Sketch Beta.</desc> <defs> </defs>
                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
                        <g id="Icon-Set-Filled" sketch:type="MSLayerGroup" transform="translate(-466.000000, -1089.000000)" fill="#098a00">
-                       <path  id="${item.id}_decrement" d="M488,1106 L483,1106 L483,1111 C483,1111.55 482.553,1112 482,1112 C481.447,1112 481,1111.55 481,1111 L481,1106 L476,1106 C475.447,1106 475,1105.55 475,1105 C475,1104.45 475.447,1104 476,1104 L481,1104 L481,1099 C481,1098.45 481.447,1098 482,1098 C482.553,1098 483,1098.45 483,1099 L483,1104 L488,1104 C488.553,1104 489,1104.45 489,1105 C489,1105.55 488.553,1106 488,1106 L488,1106 Z M482,1089 C473.163,1089 466,1096.16 466,1105 C466,1113.84 473.163,1121 482,1121 C490.837,1121 498,1113.84 498,1105 C498,1096.16 490.837,1089 482,1089 L482,1089 Z" sketch:type="MSShapeGroup"> </path> </g> </g> </g></svg>
+                       <path  id="${item.id.replace(" ","-")}_decrement" d="M488,1106 L483,1106 L483,1111 C483,1111.55 482.553,1112 482,1112 C481.447,1112 481,1111.55 481,1111 L481,1106 L476,1106 C475.447,1106 475,1105.55 475,1105 C475,1104.45 475.447,1104 476,1104 L481,1104 L481,1099 C481,1098.45 481.447,1098 482,1098 C482.553,1098 483,1098.45 483,1099 L483,1104 L488,1104 C488.553,1104 489,1104.45 489,1105 C489,1105.55 488.553,1106 488,1106 L488,1106 Z M482,1089 C473.163,1089 466,1096.16 466,1105 C466,1113.84 473.163,1121 482,1121 C490.837,1121 498,1113.84 498,1105 C498,1096.16 490.837,1089 482,1089 L482,1089 Z" sketch:type="MSShapeGroup"> </path> </g> </g> </g></svg>
                    </span>
                     </span>
 
@@ -708,7 +709,7 @@
                     customDialog.style.display = 'flex';
                     const confirmDialogId = document.getElementsByClassName("confirm")[0];
                     console.log(confirmDialogId)
-                    confirmDialogId.id = item.id
+                    confirmDialogId.id = item.id.replace(" ","-")
 
 //                    const index = cartContents.findIndex((cartItem) => cartItem.id === r.id);
 //                    cartContents.splice(index, 1);
