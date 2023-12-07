@@ -13,7 +13,7 @@ def get_orders():
                        '<td style="width: 40%;padding-left: 10px">#' + x.name.split("-")[1] + '<br>' + str(
             x.total_amount) + '<br>TABLE: ' + x.table + ' </td>' \
                                                         '<td style="width: 58%">' + str(x.posting_date) + " " + str(
-            x.posting_time) + ' <br>' + x.mode_of_payment + ' <br>' + x.status + '</td>' \
+            x.posting_time) + ' <br>' + (x.mode_of_payment if x.mode_of_payment else "") + ' <br>' + (x.status if x.status else "") + '</td>' \
                                                                                  '</table>'
         print(x['table'])
     selected_order = ""

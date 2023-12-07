@@ -132,7 +132,7 @@ function create_order() {
         title: 'Enter details',
         fields: [
             {
-                fieldname: "table", fieldtype: "Link", options: "Table",
+                fieldname: "table", fieldtype: "Link", options: "Table",reqd:1,
                 in_list_view: 1, label: "Table",
                 get_query: function () {
                     return {
